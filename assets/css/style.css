@@ -1,0 +1,18 @@
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #ce5100;
+    /* background-color: #eefef4;  Adjust color as needed */
+    z-index: 9999;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #0a1819; /*Adjust color as needed*/
+    /* background-color: #023044;   */
+    transition: width 0.2s;
+  }
