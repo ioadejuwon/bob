@@ -5,8 +5,8 @@
     $dbname = 'bobthebuilder';
     $conn = mysqli_connect($dbhost,$dbuser,$dbpass, $dbname);
 
-    if(!$conn){
-        die("Could not connectnn ". mysqli_connect_error());
-    }else{
-        echo 'Connection successful!';
-    }
+    // if(!$conn){
+    //     die("Could not connectnn ". mysqli_connect_error());
+    // }else{
+    //     echo 'Connection successful!';
+    // }

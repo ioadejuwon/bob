@@ -87,14 +87,14 @@
 :root {
   --color-white: #FFFFFF;
   --color-black: #000000;
-  --color-dark-1: #140342;
-  --color-dark-2: #1A064F;
-  --color-dark-3: #6A7A99;
-  --color-dark-4: #242239;
-  --color-dark-5: #282664;
-  --color-dark-6: #311F61;
-  --color-dark-7: #EAE9EF;
-  --color-dark-8: #202124;
+  --color-dark-1: #0a1819;
+  --color-dark-2: #072c2e;
+  --color-dark-3: #16383b;
+  --color-dark-4: #055e64;
+  --color-dark-5: #0098a3;
+  --color-dark-6: #0098a3;
+  --color-dark-7: #0098a3;
+  --color-dark-8: #0098a3;
   --color-light-1: #4F547B;
   --color-light-2: #E4E7EA;
   --color-light-3: #EEF2F6;
@@ -107,7 +107,7 @@
   --color-light-10: #F4F3F6;
   --color-light-11: #EBEAFE;
   --color-light-12: #CCE0F8;
-  --color-deep-green-1: #0a1819;
+  --color-deep-green-1: #21565e;
   --color-deep-green-2: #072c2e;
   --color-deep-green-3: #16383b;
   --color-deep-green-4: #055e64;
@@ -119,7 +119,7 @@
   --color-green-5: #34A853;
   --color-green-6: #DFF1DD;
   --color-green-7: #D9FFED;
-  --color-orange-1: #E8543E;
+  --color-orange-1: #CE5100;
   --color-orange-2: #F7E9E7;
   --color-orange-3: #FDF2EB;
   --color-orange-4: #E97D38;
@@ -2728,6 +2728,7 @@ input[type="email"] {
 .-dark-mode form.contact-form input[type="text"],
 .-dark-mode form.contact-form input[type="password"],
 .-dark-mode form.contact-form input[type="search"],
+.-dark-mode form.contact-form input[type="number"],
 .-dark-mode form.contact-form textarea,
 .-dark-mode form.contact-form input[type="email"] {
   border-color: rgba(255, 255, 255, 0.2);
@@ -2738,6 +2739,7 @@ form.contact-form select,
 form.contact-form input[type="text"],
 form.contact-form input[type="password"],
 form.contact-form input[type="search"],
+form.contact-form input[type="number"],
 form.contact-form textarea,
 form.contact-form input[type="email"] {
   border: 0;
@@ -8606,7 +8608,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidebar.-dashboard .sidebar__item.-is-active {
-  background-color: var(--color-dark-1);
+  background-color: var(--color-deep-green-1);
   color: white !important;
 }
 
@@ -15490,14 +15492,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 table.table thead {
-  background-color: var(--color-deep-green-3);
+  background-color: var(--color-deep-green-1);
 }
 
 table.table th {
   padding: 25px;
   font-size: 16px;
   line-height: 1;
-  color: var(--color-deep-green-1);
+  color: var(--color-white);
   font-weight: 500;
 }
 
