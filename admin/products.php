@@ -8,37 +8,27 @@
     
 
     if(!isset($_SESSION['user_id'])){
-      header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
-      exit; // Make sure to exit after sending the redirection header
-  }else{
-      $unique_id = $_SESSION['user_id'];
-      
-  }
+        header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
+        exit; // Make sure to exit after sending the redirection header
+    }else{
+        $unique_id = $_SESSION['user_id'];
+        
+    }
   
   include_once "adm-head.php"; 
   include_once "adm-header.php"; 
 
 
   
-  
-    $sql = mysqli_query($conn, "SELECT * FROM tera_users WHERE unique_id = '{$_SESSION['unique_id']}'");
-    $row = mysqli_fetch_assoc($sql);
-    $unique_id = $row["unique_id"];
-    $fname = !empty($row["fname"]) ? $row["fname"] : "No info entered";
-    $lname = !empty($row["fname"]) ? $row["lname"] : "No info entered";
+  $sql = mysqli_query($conn, "SELECT * FROM bob_admin WHERE user_id = '{$_SESSION['user_id']}'");
+  $row = mysqli_fetch_assoc($sql);
+  $user_id = $row["user_id"];
 
-    $uname = !empty($row["fname"]) ? $row["uname"] : "No info entered";
-    
-    $countryCode = $row['countryCode'];
-    $phoneNumber = $row['phoneNo'];
-    $phone = $countryCode.$phoneNumber;
-    $phone = (!empty($countryCode) && !empty($phoneNumber)) ? $countryCode.$phoneNumber : 'No info entered';
+  $fname = $row['fname'];
 
-    $email = $row['email'];
-    $email = !empty($row["email"]) ? $row["email"] : "No info entered";
+  // $categories = mysqli_query($conn, "SELECT * FROM bob_categories");
 
-    $instructor = $row["instructor"];
-    $admin = $row["admin"];
+  // $product_id = $_GET['productid'];
 
 
 ?>
@@ -121,27 +111,6 @@
                                 </div>
                                 <div>
 
-                                  <div class="dropdown js-dropdown js-review-active">
-                                    <div class="dropdown__button d-flex items-center text-14 bg-white -dark-bg-dark-2 border-light rounded-8 px-20 py-10 text-14 lh-12" data-el-toggle=".js-review-toggle" data-el-toggle-active=".js-review-active">
-                                      <span class="js-dropdown-title">Old Review</span>
-                                      <i class="icon text-9 ml-40 icon-chevron-down"></i>
-                                    </div>
-
-                                    <div class="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-review-toggle">
-                                      <div class="text-14 y-gap-15 js-dropdown-list">
-
-                                        <div><a href="#" class="d-block js-dropdown-link">Animation</a></div>
-
-                                        <div><a href="#" class="d-block js-dropdown-link">Design</a></div>
-
-                                        <div><a href="#" class="d-block js-dropdown-link">Illustration</a></div>
-
-                                        <div><a href="#" class="d-block js-dropdown-link">Business</a></div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-
                                 </div>
                               </div>
                             </div>
@@ -149,60 +118,58 @@
 
                           <div class="row y-gap-30 pt-30">
 
+                          <?php 
+                            $prodsql = mysqli_query($conn, "SELECT * FROM products");
+                            while ($row_prod = mysqli_fetch_assoc($prodsql)) {
+                                $product_name = $row_prod['producttitle']; // Assuming the column name for the product name is 'product_name'
+                                $price = $row_prod['price']; // Assuming the column name for the original price is 'original_price'
+                                $dis_price = $row_prod['discount_price']; // Assuming the column name for the discounted price is 'discounted_price'
+                                $original_price = '&#8358;' . number_format($price);
+                                $discounted_price = '&#8358;' . number_format($dis_price);
+
+                                $product_id = $row_prod['productid'];
+
+                                $prodsql_img = mysqli_query($conn, "SELECT * FROM product_images WHERE thumbnail = 1 AND product_id = '$product_id'");
+                                  $row_prod_img = mysqli_fetch_assoc($prodsql_img);
+                                  // while ($row_prod_img = mysqli_fetch_assoc($prodsql_img)) {
+                                  $image_path = '../'.$row_prod_img['image_path'];
+                                  $image_id = $row_prod_img['img_id'];
+                                  // $is_thumbnail = $row_prod_img['thumbnail'] == 1 ? 'thumbnail-selected' : '';
+                                
+                            ?>
+
                             <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/1">
-                              <div class="relative">
-                                <img class="rounded-8 w-1/1" src="../assets/img/coursesCards/1.png" alt="image">
-
-                                <button class="absolute-button" data-el-toggle=".js-more-1-toggle">
-                                  <span class="d-flex items-center justify-center size-35 bg-white shadow-1 rounded-8">
-                                    <i class="icon-menu-vertical"></i>
-                                  </span>
-                                </button>
-
-                                <div class="toggle-element -dshb-more js-more-1-toggle">
-                                  <div class="px-25 py-25 bg-white -dark-bg-dark-2 shadow-1 border-light rounded-8">
-                                    <a href="#" class="d-flex items-center">
-                                      <div class="icon-share"></div>
-                                      <div class="text-17 lh-1 fw-500 ml-12">Share</div>
-                                    </a>
-
-                                    <a href="#" class="d-flex items-center mt-20">
-                                      <div class="icon-bookmark"></div>
-                                      <div class="text-17 lh-1 fw-500 ml-12">Favorite</div>
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div class="pt-15">
-                                <div class="d-flex y-gap-10 justify-between items-center">
-                                  <div class="text-14 lh-1">Ali Tufan</div>
-
-                                  <div class="d-flex items-center">
-                                    <div class="text-14 lh-1 text-yellow-1 mr-10">4.5</div>
-                                    <div class="d-flex x-gap-5 items-center">
-                                      <i class="icon-star text-9 text-yellow-1"></i>
-                                      <i class="icon-star text-9 text-yellow-1"></i>
-                                      <i class="icon-star text-9 text-yellow-1"></i>
-                                      <i class="icon-star text-9 text-yellow-1"></i>
-                                      <i class="icon-star text-9 text-yellow-1"></i>
+                                <div class="productCard -type-1 text-center">
+                                    <div class="productCard__image">
+                                        <div class="ratio ratio-63:57">
+                                            <img class="absolute-full-center rounded-8" src="<?php echo $image_path; ?>" alt="product image">
+                                        </div>
+                                        <div class="productCard__controls z-3">
+                                            <a href="#" class="productCard__icon">
+                                                <i class="fa-regular fa-send"></i>
+                                            </a>
+                                            <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery productCard__icon" data-gallery="gallery1">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                  </div>
+                                    <div class="productCard__content mt-20">
+                                        <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
+                                        <div class="text-17 fw-500 text-deep-green-1 mt-15">
+                                            <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <h3 class="text-16 fw-500 lh-15 mt-10">Learn Figma - UI/UX Design Essential Training</h3>
-
-                                <div class="progress-bar mt-10">
-                                  <div class="progress-bar__bg bg-light-3"></div>
-                                  <div class="progress-bar__bar bg-terabyte-1 w-1/5"></div>
-                                </div>
-
-                                <div class="d-flex y-gap-10 justify-between items-center mt-10">
-                                  <div class="text-dark-1">% 20 Completed</div>
-                                  <div>25%</div>
-                                </div>
-                              </div>
                             </div>
+
+                            <?php } ?>
+
+
+
+                            
+
+
+                            
 
                            
 

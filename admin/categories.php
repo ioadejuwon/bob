@@ -22,16 +22,11 @@
     include_once "adm-head.php"; 
     include_once "adm-header.php"; 
 
-
-    $sql = mysqli_query($conn, "SELECT * FROM tera_users WHERE unique_id = '{$_SESSION['unique_id']}'");
+    $sql = mysqli_query($conn, "SELECT * FROM bob_admin WHERE user_id = '{$_SESSION['user_id']}'");
     $row = mysqli_fetch_assoc($sql);
-    $unique_id = $row["unique_id"];
-
-    $instructor = $row["instructor"];
-    $admin = $row["admin"];
-
-    if ($instructor == 1 || $admin == 1): header("location: ".DASHBOARD);// redirect to login page if not signed in
-    endif;
+    $user_id = $row["user_id"];
+  
+    $fname = $row['fname'];
 
     $categories = mysqli_query($conn, "SELECT * FROM bob_categories");
     
@@ -114,8 +109,8 @@
                       <thead>
                         <tr>
                           <th>Category Name</th>
-                          <th>Hour</th>
-                          <th>Quantity</th>
+                          <th>No. of Products</th>
+                          <!-- <th>Quantity</th>  -->
                         </tr>
                       </thead>
                       <tbody id="categoryTableBody">
@@ -123,11 +118,18 @@
 
                           while ($row_categories = mysqli_fetch_assoc($categories)) {
                             $categoryname = $row_categories['categoryName'];
+                            $category_id = $row_categories['categoryid'];
+
+
+                            $products_cat = mysqli_query($conn, "SELECT * FROM products WHERE productcategory = '$category_id'");
+                            // while ($prod_categories = mysqli_fetch_assoc($products_cat)) {
+                              // $prod_categories = mysqli_fetch_assoc($products_cat);
+                              $count_row_store = mysqli_num_rows($products_cat);
                         ?>
                         <tr>
                           <td><?php echo $categoryname?></td>
-                          <td>14</td>
-                          <td>3</td>
+                          <td><?php echo $count_row_store ?></td>
+                          <!-- <td>3</td> -->
                         </tr>
 
                         <?php

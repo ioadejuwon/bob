@@ -1,19 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
-
-
-<style>
-.dz-message{
-    /* padding: 3rem 1rem; */
-}
-.dropzone-previews{
-
-/* f:d; */
-}
-.dz-errormessage{
-    background-color: #fff;
-}
-</style>
 <?php 
     session_start();
     
@@ -81,7 +65,8 @@
                   
 
                     <div class="py-30 px-30">
-                      <form action="#"  class="dropzone bg-transparent border-0 contact-form row y-gap-30" id="my-dropzone"  enctype="multipart/form-data">
+
+                      <form id="product-details-form"  class="contact-form row y-gap-30">
 
                         <div class="col-12">
                           <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Name<span class="text-red-1">*</span> </label>
@@ -99,7 +84,7 @@
                           <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Course category <span class="text-red-1">*</span></label>
 
                           <select class="selectize wide js-selectize" name="productcategory" value="<?php echo $coursecategory ?>">
-                            <option value="">Choose category</option>
+                            <option value="none">Choose category</option>
                             <?php
                                 while ($row_categories = mysqli_fetch_assoc($categories)) {
                                   $categoryname = $row_categories['categoryName'];
@@ -123,30 +108,12 @@
                           <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Discount Price  <span class="text-red-1">*</span></label>
                           <input  type="number" name="discount_price" value="<?php echo $qty ?>" placeholder="Enter Discount Price">
                         </div>
-                   
-
 
                         <div class="col-12">
-
                           <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Description  <span class="text-red-1">*</span></label>
-
                           <textarea placeholder="Description" rows="7" name="productdescription" value="<?php echo $productdescription ?>"></textarea>
                         </div>
 
-
-                        <div class="col-12">
-                          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Images <span class="text-red-1">*</span></label>
-                          <div class="dropzone-previews" > </div>
-                            <div class="rounded-2" style="border:1px dotted ; color: #95aac9;">
-                                <div class="dz-default dz-message">Upload your product images here</div>
-                            </div>
-                            <div class="form-text text-muted mt-4 ">Max file size is 3MB and max number of files is 5.</div>
-                            <div id="pimageError" class="form-text error-message text-danger"></div>
-
-                            <div class="fallback">
-                                <input name="file" type="file" multiple />
-                            </div>
-                        </div>
 
                         <div class="row y-gap-20 justify-between pt-15">
                           
@@ -164,7 +131,7 @@
                           </div>
 
                           <div class="col-auto">
-                            <button class="button -md -deep-green-1 text-white" type="submit" id="submit">
+                            <button class="button -md -deep-green-1 text-white" type="submit" id="productFormSubmit">
                               Next
                               &nbsp;
                               <i class="text-20 fa-solid fa-angle-right"></i>

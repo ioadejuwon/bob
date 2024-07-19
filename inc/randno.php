@@ -7,7 +7,8 @@ include_once "config.php";
 
 $n=10; //File renaming unique
 $k=7; //User ID for new accounts 
-$j=3; //User ID for new accounts 
+$j=3; //Category ID for product categories
+$l=3; //Product ID for products
 
 
 
@@ -28,3 +29,5 @@ $uid = getName($n);
 
 $user_id = getName($k);
 $categoryID = "cat-".getName($j).'-'.getName($j);
+$productID = "prod-".getName($l).'-'.getName($l);
+$imgID = "img-".getName($l);

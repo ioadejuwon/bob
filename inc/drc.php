@@ -1,5 +1,5 @@
 <?php
-$user_id = $_SESSION['unique_id'];
+$user_id = $_SESSION['user_id'];
 
 $footeryear = date("Y");
 define('FOOTERYEAR', $footeryear);
@@ -21,6 +21,7 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     define('CATEGORIES', ADMIN_URL.'categories.php');
     define('PRODUCTS', ADMIN_URL.'products.php');
     define('PROFILE', ADMIN_URL.'profile.php');
+    define('ADD_IMAGE', ADMIN_URL.'add_image.php');
 
     define('LOGOUT', BASE_URL.'logout.php?id='.$user_id); // Logout Link
 
@@ -39,6 +40,7 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     define('CATEGORIES', ADMIN_URL.'categories');
     define('PRODUCTS', ADMIN_URL.'products');
     define('PROFILE', ADMIN_URL.'profile');
+    define('ADD_IMAGE', ADMIN_URL.'add_image');
 
     define('LOGOUT', BASE_URL.'logout.php?id='.$user_id); // Logout Link
 }
