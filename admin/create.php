@@ -94,27 +94,35 @@
 
                         <div class="col-md-6">
                             <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Price <span class="text-red-1">*</span></label>
-                            <input type="number" name="price" value="<?php echo $qty ?>" placeholder="Enter Price" required>
+                            <input type="number" name="price" value="<?php echo $qty ?>" placeholder="Amount the customer pays" required>
                         </div>
                         
                         <div class="col-md-6">
                             <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Discount Price <span class="text-red-1">*</span></label>
-                            <input type="number" name="discount_price" value="<?php echo $qty ?>" placeholder="Enter Discount Price">
+                            <input type="number" name="discount_price" value="<?php echo $qty ?>" placeholder="Usually the higher amount">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Short Description <span class="text-red-1">*</span></label>
+                            <textarea placeholder="Short Description" rows="7" name="shortdescription" value="<?php echo $shortdescription ?>" required></textarea>
                         </div>
 
                         <div class="col-12">
                             <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Description <span class="text-red-1">*</span></label>
-                            <textarea placeholder="Description" rows="7" name="productdescription" value="<?php echo $productdescription ?>" required></textarea>
+                            <textarea placeholder="You can make this one longer" rows="7" name="productdescription" value="<?php echo $productdescription ?>" required></textarea>
                         </div>
 
                         <div class="row y-gap-20 justify-between pt-15">
-                            <div id="error-message" class="col-12 text-red-1"></div> <!-- Ensure this div is correctly placed -->
+                            
+                            <div id="error-message" class="col-12 text-red-1">
+
+                            </div> 
 
                             <div class="col-auto">
-                                <a href="#">
-                                    <button class="button -md -outline-deep-green-1 text-deep-green-1">
-                                        <i class="text-20 fa-solid fa-angle-left"></i>&nbsp; Prev
-                                    </button>
+                                <a href="<?php echo PRODUCTS ?>" class="button -md -outline-deep-green-1 text-deep-green-1">
+
+                                        <i class="text-20 fa-solid fa-angle-left"></i> &nbsp; Prev
+
                                 </a>
                             </div>
 

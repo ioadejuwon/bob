@@ -14,6 +14,7 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     
     define('SIGNUP', BASE_URL.'signup.php');
     define('SHOP', BASE_URL.'shop.php');
+    define('PRODUCT_DETAIILS', BASE_URL.'product.php');
 
     define('ADMIN_LOGIN', ADMIN_URL.'login.php');
     define('DASHBOARD', ADMIN_URL.'dashboard.php');
@@ -22,6 +23,7 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     define('PRODUCTS', ADMIN_URL.'products.php');
     define('PROFILE', ADMIN_URL.'profile.php');
     define('ADD_IMAGE', ADMIN_URL.'add_image.php');
+    
 
     define('LOGOUT', BASE_URL.'logout.php?id='.$user_id); // Logout Link
 
@@ -33,6 +35,7 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
 
     define('SIGNUP', BASE_URL.'signup');
     define('SHOP', BASE_URL.'shop');
+    define('PRODUCT_DETAIILS', BASE_URL.'product');
 
     define('ADMIN_LOGIN', ADMIN_URL.'login');
     define('DASHBOARD', ADMIN_URL.'dashboard');

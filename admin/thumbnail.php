@@ -21,7 +21,6 @@
     $product_id = $_GET['productid'];
 
     $products_num = mysqli_query($conn, "SELECT * FROM products WHERE productid = '$product_id'");
-    // $prod_categories = mysqli_fetch_assoc($products_cat);
     $count_row_product = mysqli_num_rows($products_num);
 
 

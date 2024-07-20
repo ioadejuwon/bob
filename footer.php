@@ -1,7 +1,7 @@
 <footer class="footer -type-5 pt-60">
     <div class="container">
         
-        <?php include_once "links.php" ?>
+        <!-- <?php include_once "links.php" ?> -->
 
         <div class="py-30 border-top-light">
             <div class="row justify-between items-center y-gap-20">

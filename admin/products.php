@@ -140,9 +140,7 @@
                                     $other_images[] = '../'.$row_prod_img['image_path'];
                                 }
                             ?>
-                            <!-- You can use $other_images array here if needed -->
-                                <!-- For example, to display other images -->
-                                
+                        
                                 
                                 <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/1">
                                     <div class="productCard -type-1 text-center">
@@ -157,10 +155,10 @@
                                                 <a data-barba href="<?php echo $image_path_thumbnail; ?>" class="gallery__item js-gallery productCard__icon" data-gallery="<?php echo $product_id ?>">
                                                     <i class="fa-regular fa-eye"></i>
                                                 </a>
-                                                
+                                                <a data-el-toggle="<?php echo '.'.$product_id ?>" class=" productCard__icon" >
+                                                    <i class="fa-regular fa-edit"></i>
+                                                </a>
                                             </div>
-                                            
-                                            
                                         </div>
                                         <div class="productCard__content mt-20">
                                             <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
@@ -174,6 +172,10 @@
                                   <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery " data-gallery="<?php echo $product_id ?>"></a>
                                 <?php endforeach; ?>
                                 </div>
+
+
+
+                                
 
                                 
                             <?php 
@@ -229,7 +231,408 @@
 
     
 
-            
+        
+            <?php 
+                            $prodsql = mysqli_query($conn, "SELECT * FROM products");
+                            while ($row_prod = mysqli_fetch_assoc($prodsql)) {
+                                $product_name = $row_prod['producttitle']; // Assuming the column name for the product name is 'product_name'
+                                $price = $row_prod['price']; // Assuming the column name for the original price is 'original_price'
+                                $dis_price = $row_prod['discount_price']; // Assuming the column name for the discounted price is 'discounted_price'
+                                $original_price = '&#8358;' . number_format($price);
+                                $discounted_price = '&#8358;' . number_format($dis_price);
+                                $product_id = $row_prod['productid'];
+
+                                // Get the thumbnail image
+                                $prodsql_img_thumbnail = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id' AND thumbnail = 1");
+                                $row_prod_img_thumbnail = mysqli_fetch_assoc($prodsql_img_thumbnail);
+                                $image_path_thumbnail = '../'.$row_prod_img_thumbnail['image_path'];
+
+                                // Get the non-thumbnail images
+                                $prodsql_img = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id' AND thumbnail = 0");
+                                $other_images = [];
+                                while ($row_prod_img = mysqli_fetch_assoc($prodsql_img)) {
+                                    $other_images[] = '../'.$row_prod_img['image_path'];
+                                }
+                            ?>
+                                <aside class="sidebar-menu toggle-element js-dsbh-sidebar-menu -is-el-visibl <?php echo $product_id ?>">
+                                  <div class="sidebar-menu__bg"></div>
+
+                                  <div class="sidebar-menu__content scroll-bar-1 py-30 px-40 sm:py-25 sm:px-20 bg-white -dark-bg-dark-1">
+                                    <div class="row items-center justify-between mb-30">
+                                      <div class="col-auto">
+                                        <div class="-sidebar-buttons">
+                                          <button data-sidebar-menu-button="<?php echo 'messages-'.$product_id ?>" class="text-17 text-dark-1 fw-500 -is-button-active">
+                                            <?php echo $product_name ?>
+                                            <?php  echo $product_id?>
+                                          </button>
+
+                                          <button data-sidebar-menu-button="<?php echo 'messages-2-'.$product_id ?>" data-sidebar-menu-target="<?php echo 'messages-'.$product_id ?>" class="d-flex items-center text-17 text-dark-1 fw-500">
+                                            <i class="icon-chevron-left text-11 text-purple-1 mr-10"></i>
+                                            Messages
+                                          </button>
+
+                                          <button data-sidebar-menu-button="<?php echo 'settings-'.$product_id ?>" data-sidebar-menu-target="<?php echo 'messages-'.$product_id ?>" class="d-flex items-center text-17 text-dark-1 fw-500">
+                                            <i class="icon-chevron-left text-11 text-purple-1 mr-10"></i>
+                                            Settings
+                                          </button>
+
+                                          <button data-sidebar-menu-button="<?php echo 'contacts-'.$product_id ?>" data-sidebar-menu-target="<?php echo 'messages-'.$product_id ?>" class="d-flex items-center text-17 text-dark-1 fw-500">
+                                            <i class="icon-chevron-left text-11 text-purple-1 mr-10"></i>
+                                            Contacts
+                                          </button>
+                                        </div>
+                                      </div>
+
+                                      <div class="col-auto">
+                                        <div class="row x-gap-10">
+                                          <div class="col-auto">
+                                            <button data-sidebar-menu-target="<?php echo 'settings-'.$product_id ?>" class="button -purple-3 text-purple-1 size-40 d-flex items-center justify-center rounded-full">
+                                              <i class="icon-setting text-16"></i>
+                                            </button>
+                                          </div>
+                                          <div class="col-auto">
+                                            <button data-sidebar-menu-target="<?php echo 'contacts-'.$product_id ?>" class="button -purple-3 text-purple-1 size-40 d-flex items-center justify-center rounded-full">
+                                              <i class="icon-friend text-16"></i>
+                                            </button>
+                                          </div>
+                                          <div class="col-auto">
+                                            <button data-el-toggle="<?php echo '.'.$product_id ?>" class="button -purple-3 text-purple-1 size-40 d-flex items-center justify-center rounded-full">
+                                              <i class="icon-close text-14"></i>
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="relative js-menu-switch">
+                                      <div data-sidebar-menu-open="<?php echo 'messages-'.$product_id ?>" class="sidebar-menu__item -sidebar-menu -sidebar-menu-opened">
+                                        <form class="search-field rounded-8 h-50" action="https://creativelayers.net/themes/educrat-html/post">
+                                          <input class="bg-light-3 pr-50" type="text" placeholder="Search Courses">
+                                          <button class="" type="submit">
+                                            <i class="icon-search text-light-1 text-20"></i>
+                                          </button>
+                                        </form>
+
+                                        <div class="accordion -block text-left pt-20 js-accordion">
+
+                                          <div class="accordion__item border-light rounded-16">
+                                            <div class="accordion__button">
+                                              <div class="accordion__icon size-30 -dark-bg-dark-2 mr-10">
+                                                <div class="icon d-flex items-center justify-center">
+                                                  <span class="lh-1 fw-500">2</span>
+                                                </div>
+                                                <div class="icon d-flex items-center justify-center">
+                                                  <span class="lh-1 fw-500">2</span>
+                                                </div>
+                                              </div>
+                                              <span class="text-17 fw-500 text-dark-1 pt-3">Starred</span>
+                                            </div>
+
+                                            <div class="accordion__content">
+                                              <div class="accordion__content__inner pl-20 pr-20 pb-20">
+                                                <div data-sidebar-menu-target="messages-2" class="row x-gap-10 y-gap-10 pointer">
+                                                  <div class="col-auto">
+                                                    <img src="img/dashboard/right-sidebar/messages/1.png" alt="image">
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="text-15 lh-12 fw-500 text-dark-1 pt-8">Darlene Robertson</div>
+                                                    <div class="text-14 lh-1 mt-5"><span class="text-dark-1">You:</span> Hello</div>
+                                                  </div>
+                                                  <div class="col-auto">
+                                                    <div class="text-13 lh-12 pt-8">35 mins</div>
+                                                  </div>
+                                                </div>
+
+                                                <div data-sidebar-menu-target="messages-2" class="row x-gap-10 y-gap-10 pt-15 pointer">
+                                                  <div class="col-auto">
+                                                    <img src="img/dashboard/right-sidebar/messages/1.png" alt="image">
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="text-15 lh-12 fw-500 text-dark-1 pt-8">Darlene Robertson</div>
+                                                    <div class="text-14 lh-1 mt-5"><span class="text-dark-1">You:</span> Hello</div>
+                                                  </div>
+                                                  <div class="col-auto">
+                                                    <div class="text-13 lh-12 pt-8">35 mins</div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="accordion__item border-light rounded-16">
+                                            <div class="accordion__button">
+                                              <div class="accordion__icon size-30 -dark-bg-dark-2 mr-10">
+                                                <div class="icon d-flex items-center justify-center">
+                                                  <span class="lh-1 fw-500">2</span>
+                                                </div>
+                                                <div class="icon d-flex items-center justify-center">
+                                                  <span class="lh-1 fw-500">2</span>
+                                                </div>
+                                              </div>
+                                              <span class="text-17 fw-500 text-dark-1 pt-3">Group</span>
+                                            </div>
+
+                                            <div class="accordion__content">
+                                              <div class="accordion__content__inner pl-20 pr-20 pb-20">
+                                                <div data-sidebar-menu-target="messages-2" class="row x-gap-10 y-gap-10 pointer">
+                                                  <div class="col-auto">
+                                                    <img src="img/dashboard/right-sidebar/messages/1.png" alt="image">
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="text-15 lh-12 fw-500 text-dark-1 pt-8">Darlene Robertson</div>
+                                                    <div class="text-14 lh-1 mt-5"><span class="text-dark-1">You:</span> Hello</div>
+                                                  </div>
+                                                  <div class="col-auto">
+                                                    <div class="text-13 lh-12 pt-8">35 mins</div>
+                                                  </div>
+                                                </div>
+
+                                                <div data-sidebar-menu-target="messages-2" class="row x-gap-10 y-gap-10 pt-15 pointer">
+                                                  <div class="col-auto">
+                                                    <img src="img/dashboard/right-sidebar/messages/1.png" alt="image">
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="text-15 lh-12 fw-500 text-dark-1 pt-8">Darlene Robertson</div>
+                                                    <div class="text-14 lh-1 mt-5"><span class="text-dark-1">You:</span> Hello</div>
+                                                  </div>
+                                                  <div class="col-auto">
+                                                    <div class="text-13 lh-12 pt-8">35 mins</div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="accordion__item border-light rounded-16">
+                                            <div class="accordion__button">
+                                              <div class="accordion__icon size-30 -dark-bg-dark-2 mr-10">
+                                                <div class="icon d-flex items-center justify-center">
+                                                  <span class="lh-1 fw-500">2</span>
+                                                </div>
+                                                <div class="icon d-flex items-center justify-center">
+                                                  <span class="lh-1 fw-500">2</span>
+                                                </div>
+                                              </div>
+                                              <span class="text-17 fw-500 text-dark-1 pt-3">Private</span>
+                                            </div>
+
+                                            <div class="accordion__content">
+                                              <div class="accordion__content__inner pl-20 pr-20 pb-20">
+                                                <div data-sidebar-menu-target="messages-2" class="row x-gap-10 y-gap-10 pointer">
+                                                  <div class="col-auto">
+                                                    <img src="img/dashboard/right-sidebar/messages/1.png" alt="image">
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="text-15 lh-12 fw-500 text-dark-1 pt-8">Darlene Robertson</div>
+                                                    <div class="text-14 lh-1 mt-5"><span class="text-dark-1">You:</span> Hello</div>
+                                                  </div>
+                                                  <div class="col-auto">
+                                                    <div class="text-13 lh-12 pt-8">35 mins</div>
+                                                  </div>
+                                                </div>
+
+                                                <div data-sidebar-menu-target="messages-2" class="row x-gap-10 y-gap-10 pt-15 pointer">
+                                                  <div class="col-auto">
+                                                    <img src="img/dashboard/right-sidebar/messages/1.png" alt="image">
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="text-15 lh-12 fw-500 text-dark-1 pt-8">Darlene Robertson</div>
+                                                    <div class="text-14 lh-1 mt-5"><span class="text-dark-1">You:</span> Hello</div>
+                                                  </div>
+                                                  <div class="col-auto">
+                                                    <div class="text-13 lh-12 pt-8">35 mins</div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                        </div>
+                                      </div>
+
+
+                                      <div data-sidebar-menu-open="<?php echo 'messages-2-'.$product_id ?>" class="sidebar-menu__item -sidebar-menu">
+                                        <div class="row x-gap-10 y-gap-10">
+                                          <div class="col-auto">
+                                            <img src="img/dashboard/right-sidebar/messages-2/1.png" alt="image">
+                                          </div>
+                                          <div class="col">
+                                            <div class="text-15 lh-12 fw-500 text-dark-1 pt-8">Arlene McCoy</div>
+                                            <div class="text-14 lh-1 mt-5">Active</div>
+                                          </div>
+                                        </div>
+
+                                        <div class="mt-20 pt-30 border-top-light">
+                                          <div class="row y-gap-20">
+                                            <div class="col-12">
+                                              <div class="row x-gap-10 y-gap-10 items-center">
+                                                <div class="col-auto">
+                                                  <img src="img/dashboard/right-sidebar/messages-2/2.png" alt="image">
+                                                </div>
+                                                <div class="col-auto">
+                                                  <div class="text-15 lh-12 fw-500 text-dark-1">Albert Flores</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                  <div class="text-14 lh-1 ml-3">35 mins</div>
+                                                </div>
+                                              </div>
+                                              <div class="bg-light-3 rounded-8 px-30 py-20 mt-15">
+                                                How likely are you to recommend our company to your friends and family?
+                                              </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                              <div class="row x-gap-10 y-gap-10 items-center justify-end">
+                                                <div class="col-auto">
+                                                  <div class="text-14 lh-1 mr-3">35 mins</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                  <div class="text-15 lh-12 fw-500 text-dark-1">You</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                  <img src="img/dashboard/right-sidebar/messages-2/3.png" alt="image">
+                                                </div>
+                                              </div>
+                                              <div class="text-right bg-light-7 -dark-bg-dark-2 text-purple-1 rounded-8 px-30 py-20 mt-15">
+                                                How likely are you to recommend our company to your friends and family?
+                                              </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                              <div class="row x-gap-10 y-gap-10 items-center">
+                                                <div class="col-auto">
+                                                  <img src="img/dashboard/right-sidebar/messages-2/3.png" alt="image">
+                                                </div>
+                                                <div class="col-auto">
+                                                  <div class="text-15 lh-12 fw-500 text-dark-1">Cameron Williamson</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                  <div class="text-14 lh-1 ml-3">35 mins</div>
+                                                </div>
+                                              </div>
+                                              <div class="bg-light-3 rounded-8 px-30 py-20 mt-15">
+                                                Ok, Understood!
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="mt-30 pb-20">
+                                          <form class="contact-form row y-gap-20" action="https://creativelayers.net/themes/educrat-html/post">
+
+                                            <div class="col-12">
+
+                                              <textarea placeholder="Write a message" rows="7"></textarea>
+                                            </div>
+
+                                            <div class="col-12">
+                                              <button type="submit" class="button -md -purple-1 text-white">Send Message</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                      <div data-sidebar-menu-open="<?php echo 'contacts-'.$product_id ?>" class="sidebar-menu__item -sidebar-menu">
+                                        <div class="tabs -pills js-tabs">
+                                          <div class="tabs__controls d-flex js-tabs-controls">
+
+                                            <button class="tabs__button px-15 py-8 rounded-8 text-dark-1 js-tabs-button is-active" data-tab-target=".-tab-item-1" type="button">Contacts</button>
+
+                                            <button class="tabs__button px-15 py-8 rounded-8 text-dark-1 js-tabs-button " data-tab-target=".-tab-item-2" type="button">Request</button>
+
+                                          </div>
+
+                                          <div class="tabs__content pt-30 js-tabs-content">
+
+                                            <div class="tabs__pane -tab-item-1 is-active">
+                                              <div class="row x-gap-10 y-gap-10 items-center">
+                                                <div class="col-auto">
+                                                  <img src="img/dashboard/right-sidebar/contacts/1.png" alt="image">
+                                                </div>
+                                                <div class="col-auto">
+                                                  <div class="text-15 lh-12 fw-500 text-dark-1">Darlene Robertson</div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="tabs__pane -tab-item-2 ">
+                                              <div class="row x-gap-10 y-gap-10 items-center">
+                                                <div class="col-auto">
+                                                  <img src="img/dashboard/right-sidebar/contacts/1.png" alt="image">
+                                                </div>
+                                                <div class="col-auto">
+                                                  <div class="text-15 lh-12 fw-500 text-dark-1">Darlene Robertson</div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                      <div data-sidebar-menu-open="<?php echo 'settings-'.$product_id ?>" class="sidebar-menu__item -sidebar-menu">
+                                        <div class="text-17 text-dark-1 fw-500">Privacy</div>
+                                        <div class="text-15 mt-5">You can restrict who can message you</div>
+                                        <div class="mt-30">
+
+                                          <div class="form-radio d-flex items-center ">
+                                            <div class="radio">
+                                              <input type="radio">
+                                              <div class="radio__mark">
+                                                <div class="radio__icon"></div>
+                                              </div>
+                                            </div>
+                                            <div class="lh-1 text-13 text-dark-1 ml-12">My contacts only</div>
+                                          </div>
+
+
+                                          <div class="form-radio d-flex items-center mt-15">
+                                            <div class="radio">
+                                              <input type="radio">
+                                              <div class="radio__mark">
+                                                <div class="radio__icon"></div>
+                                              </div>
+                                            </div>
+                                            <div class="lh-1 text-13 text-dark-1 ml-12">My contacts and anyone in my courses</div>
+                                          </div>
+
+
+                                          <div class="form-radio d-flex items-center mt-15">
+                                            <div class="radio">
+                                              <input type="radio">
+                                              <div class="radio__mark">
+                                                <div class="radio__icon"></div>
+                                              </div>
+                                            </div>
+                                            <div class="lh-1 text-13 text-dark-1 ml-12">Anyone on the site</div>
+                                          </div>
+
+                                        </div>
+
+                                        <div class="text-17 text-dark-1 fw-500 mt-30 mb-30">Notification preferences</div>
+                                        <div class="form-switch d-flex items-center">
+                                          <div class="switch">
+                                            <input type="checkbox">
+                                            <span class="switch__slider"></span>
+                                          </div>
+                                          <div class="text-13 lh-1 text-dark-1 ml-10">Email</div>
+                                        </div>
+
+                                        <div class="text-17 text-dark-1 fw-500 mt-30 mb-30">General</div>
+                                        <div class="form-switch d-flex items-center">
+                                          <div class="switch">
+                                            <input type="checkbox">
+                                            <span class="switch__slider"></span>
+                                          </div>
+                                          <div class="text-13 lh-1 text-dark-1 ml-10">Use enter to send</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </aside>
+
+                                
+
+                                <?php } ?>
 <?php 
     include_once "adm-footer.php"; 
     include_once "adm-tail.php"; 
