@@ -26,7 +26,7 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
     if (in_array($fileType, ['jpg', 'jpeg', 'png', 'gif']) && $fileSize <= 3145728) { // 3MB
         if (move_uploaded_file($fileTmpName, "../".$targetFile)) {
             // Insert file path into the database
-            $sql = "INSERT INTO product_images (product_id, img_id, image_path, thumbnail) VALUES (?, ?, ?, 0)";
+            $sql = "INSERT INTO product_images (product_id, img_id, image_path, thumbnail) VALUES (?, ?, ?, 1)";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "sss", $product_id, $img_id, $targetFile);
 

@@ -13,51 +13,48 @@
       
       <section data-anim-wrap class="mainSlider -type-1 js-mainSlider">
         <div class="swiper-wrapper">
-
           <div class="swiper-slide">
             <div data-anim-child="fade" class="mainSlider__bg">
-              <div class="bg-image js-lazy" data-bg="assets/img/home-2/mainSlider/bg.png"></div>
+              <div class="bg-image js-lazy" data-bg="assets/img/landing.jpg"></div>
             </div>
           </div>
-
           <div class="swiper-slide">
             <div data-anim-child="fade" class="mainSlider__bg">
-              <div class="bg-image js-lazy" data-bg="assets/img/home-2/mainSlider/bg.png"></div>
+              <div class="bg-image js-lazy" data-bg="assets/img/landing.jpg"></div>
             </div>
           </div>
-
           <div class="swiper-slide">
             <div data-anim-child="fade" class="mainSlider__bg">
-              <div class="bg-image js-lazy" data-bg="assets/img/home-2/mainSlider/bg.png"></div>
+              <div class="bg-image js-lazy" data-bg="assets/img/landing.jpg"></div>
             </div>
           </div>
-
         </div>
 
         <div class="container">
-          <div class="row justify-center text-center" style="padding-bottom:10%">
-            <div class="col-xl-6 col-lg-8">
-              <div class="mainSlider__content">
-                <h1 data-anim-child="slide-up delay-3" class="mainSlider__title text-white">
-                  Learn Your Way With Educrat To <span class="text-green-1 underline">Web Design</span>
-                </h1>
-
-                <p data-anim-child="slide-up delay-4" class="mainSlider__text text-white">
-                  More than 6.500 online courses
-                </p>
-
+            <div class="row y-gap-50 justify-center items-center text-center">
+              <div class="col-xl-6 col-lg-8">
+                <div class="mainSlider__content">
+                  <div data-anim-child="slide-up delay-2" class="masthead__subtitle fw-500 text-green-1 text-17 lh-15">
+                    NEW ARRIVAL
+                  </div>
+                  <h1 data-anim-child="slide-up delay-3" class="mainSlider__title text-white">
+                    Ego Builder
+                  </h1>
+                  <div data-anim-child="slide-up delay-2" class="masthead__subtitle fw-500 text-green-1 text-17 lh-15 mt-10">
+                    Comfortability
+                  </div>
+                  <div data-anim-child="slide-up delay-4" class="masthead__button mt-20 mb-90">
+                    <a href="<?php  echo SHOP ?>" class="button -md -white text-dark-1">Visit the shop</a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          
-        </div>
-
-        <button class="d-none swiper-prev button -white-20 text-white size-60 rounded-full d-flex justify-center items-center js-prev" style="display: none !important;">
+        <button class="d-none swiper-prev button -white-20 text-white size-60 rounded-full d-flex justify-center items-center js-prev d-none">
           <i class="icon icon-arrow-left text-24"></i>
         </button>
 
-        <button class="d-none swiper-next button -white-20 text-white size-60 rounded-full d-flex justify-center items-center js-next" style="display: none !important;">
+        <button class="d-none swiper-next button -white-20 text-white size-60 rounded-full d-flex justify-center items-center js-next d-none">
           <i class="icon icon-arrow-right text-24"></i>
         </button>
       </section>
@@ -66,7 +63,7 @@
       <div class="d-none" style="padding-top: 2%;;">
         <section data-anim-wrap class="masthead -type-2">
           <div class="masthead__bg">
-            <div class="bg-image js-lazy" data-bg="assets/img/home-3/masthead/bg.png"></div>
+            <div class="bg-image js-lazy" data-bg="assets/img/landing.png"></div>
           </div>
 
           <div class="container">

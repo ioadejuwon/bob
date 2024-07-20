@@ -14,23 +14,36 @@
     
 
     include_once "../inc/config.php"; 
-    $pagetitle = "Add New Course";
+    $pagetitle = "Thumbnails";
     include_once "../inc/drc.php"; 
 
     
+    $product_id = $_GET['productid'];
+
+    $products_num = mysqli_query($conn, "SELECT * FROM products WHERE productid = '$product_id'");
+    // $prod_categories = mysqli_fetch_assoc($products_cat);
+    $count_row_product = mysqli_num_rows($products_num);
+
+
+    $products_img = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id'");
+    // $prod_categories = mysqli_fetch_assoc($products_cat);
+    $count_row_images = mysqli_num_rows($products_img);
 
     if(!isset($_SESSION['user_id'])){
       header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
       exit; // Make sure to exit after sending the redirection header
+    }elseif($product_id == '' || $count_row_product < 1){
+      header("location: ".PRODUCTS);// redirect to login page if not signed in
+    }elseif($count_row_images < 1){
+      header("location: ".ADD_IMAGE."?productid=".$product_id);// redirect to login page if not signed in
     }else{
         $user_id = $_SESSION['user_id'];
-        
     }
   
   $pagetitle = "Add New Product";
   
   include_once "adm-head.php"; 
-  include_once "adm-header.php"; 
+  // include_once "adm-header.php"; 
 
 
     // include_once "../inc/add-course.php"; 
@@ -44,7 +57,7 @@
 
     // $categories = mysqli_query($conn, "SELECT * FROM bob_categories");
 
-    $product_id = $_GET['productid'];
+    
 
 ?>
 

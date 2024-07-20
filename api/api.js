@@ -46,26 +46,48 @@ $(document).ready(function() {
     // Add category to the Database end
 
 
-    // Add product to the database begin
     $('#productFormSubmit').click(function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: '../api/upload_product_details.php',
-            type: 'POST',
-            data: $('#product-details-form').serialize(),
-            success: function(response) {
-                const result = JSON.parse(response);
-                if (result.success) {
-                    window.location.href = 'add_image.php?productid=' + result.product_id;
-                } else {
-                    $('#error-message').text(result.error);
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error(textStatus, errorThrown);
-            }
-        });
+    e.preventDefault();
+
+    // Clear previous error messages
+    $('#error-message').text('');
+
+    // Validate form fields
+    let isValid = true;
+    $('#product-details-form').find('input[required], textarea[required], select[required]').each(function() {
+        if ($(this).val() === '') {
+            isValid = false;
+            $(this).addClass('error');  // Add a class to highlight the error (you can style it in CSS)
+        } else {
+            $(this).removeClass('error');
+        }
     });
+
+    if (!isValid) {
+        $('#error-message').text('Please, fill all required fields.');
+        return;
+    }
+
+    // Proceed with AJAX request if validation passes
+    $.ajax({
+        url: '../api/upload_product_details.php',
+        type: 'POST',
+        data: $('#product-details-form').serialize(),
+        success: function(response) {
+            const result = JSON.parse(response);
+            if (result.success) {
+                window.location.href = 'add_image.php?productid=' + result.product_id;
+            } else {
+                $('#error-message').html('An error occurred: ' + result.message);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $('#error-message').html('An error occurred: ' + textStatus + ' - ' + errorThrown);
+        }
+    });
+});
+
+    
 
     // Add product to the database end
     

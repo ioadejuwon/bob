@@ -66,82 +66,66 @@
 
                     <div class="py-30 px-30">
 
-                      <form id="product-details-form"  class="contact-form row y-gap-30">
-
+                    <form id="product-details-form" class="contact-form row y-gap-30">
                         <div class="col-12">
-                          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Name<span class="text-red-1">*</span> </label>
-                          <input type="text" name="producttitle" value="<?php echo $producttitle ?>" placeholder="Enter the title of the course">
-                          <input type="hidden" name="user_id" value="<?php echo $user_id ?>" placeholder="">
+                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Name<span class="text-red-1">*</span></label>
+                            <input type="text" name="producttitle" value="<?php echo $producttitle ?>" placeholder="Enter the title of the course" required>
+                            <input type="hidden" name="user_id" value="<?php echo $user_id ?>" placeholder="">
                         </div>
                         
                         <div class="col-md-6">
-                          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Available Quantity  <span class="text-red-1">*</span></label>
-                          <input  type="number" name="qty" value="<?php echo $qty ?>" placeholder="Enter Available Qty.">
-                        </div>
-
-
-                        <div class="col-md-6">
-                          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Course category <span class="text-red-1">*</span></label>
-
-                          <select class="selectize wide js-selectize" name="productcategory" value="<?php echo $coursecategory ?>">
-                            <option value="none">Choose category</option>
-                            <?php
-                                while ($row_categories = mysqli_fetch_assoc($categories)) {
-                                  $categoryname = $row_categories['categoryName'];
-                                  $category_id = $row_categories["categoryid"];
-                              ?>
-                              <tr>
-                                <option value="<?php echo $category_id?>"><?php echo $categoryname?></option>
-
-                              <?php
-                                }
-                              ?>
-                          </select>
-
+                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Available Quantity <span class="text-red-1">*</span></label>
+                            <input type="number" name="qty" value="<?php echo $qty ?>" placeholder="Enter Available Qty." required>
                         </div>
 
                         <div class="col-md-6">
-                          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Price  <span class="text-red-1">*</span></label>
-                          <input  type="number" name="price" value="<?php echo $qty ?>" placeholder="Enter Price">
+                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Course category <span class="text-red-1">*</span></label>
+                            <select class="selectize wide js-selectize" name="productcategory" value="<?php echo $coursecategory ?>" required>
+                                <option value="none">Choose category</option>
+                                <?php
+                                    while ($row_categories = mysqli_fetch_assoc($categories)) {
+                                        $categoryname = $row_categories['categoryName'];
+                                        $category_id = $row_categories["categoryid"];
+                                ?>
+                                <option value="<?php echo $category_id ?>"><?php echo $categoryname ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
+
                         <div class="col-md-6">
-                          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Discount Price  <span class="text-red-1">*</span></label>
-                          <input  type="number" name="discount_price" value="<?php echo $qty ?>" placeholder="Enter Discount Price">
+                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Price <span class="text-red-1">*</span></label>
+                            <input type="number" name="price" value="<?php echo $qty ?>" placeholder="Enter Price" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Discount Price <span class="text-red-1">*</span></label>
+                            <input type="number" name="discount_price" value="<?php echo $qty ?>" placeholder="Enter Discount Price">
                         </div>
 
                         <div class="col-12">
-                          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Description  <span class="text-red-1">*</span></label>
-                          <textarea placeholder="Description" rows="7" name="productdescription" value="<?php echo $productdescription ?>"></textarea>
+                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Product Description <span class="text-red-1">*</span></label>
+                            <textarea placeholder="Description" rows="7" name="productdescription" value="<?php echo $productdescription ?>" required></textarea>
                         </div>
-
 
                         <div class="row y-gap-20 justify-between pt-15">
-                          
-                          <div id="error-message"></div>
+                            <div id="error-message" class="col-12 text-red-1"></div> <!-- Ensure this div is correctly placed -->
 
-                          <div class="col-auto">
-                            <!-- <i class="text-20 fa- mr-15"></i> -->
-                            
-                            <a href="#">
-                            <button class="button -md -outline-deep-green-1 text-deep-green-1">
-                              <i class="text-20 fa-solid fa-angle-left"></i>&nbsp;
-                              Prev
-                            </button>
-                            </a>
+                            <div class="col-auto">
+                                <a href="#">
+                                    <button class="button -md -outline-deep-green-1 text-deep-green-1">
+                                        <i class="text-20 fa-solid fa-angle-left"></i>&nbsp; Prev
+                                    </button>
+                                </a>
+                            </div>
+
+                              <div class="col-auto">
+                                  <button class="button -md -deep-green-1 text-white" type="submit" id="productFormSubmit">
+                                      Next &nbsp; <i class="text-20 fa-solid fa-angle-right"></i>
+                                  </button>
+                              </div>
                           </div>
-
-                          <div class="col-auto">
-                            <button class="button -md -deep-green-1 text-white" type="submit" id="productFormSubmit">
-                              Next
-                              &nbsp;
-                              <i class="text-20 fa-solid fa-angle-right"></i>
-                            </button>
-                          </div>
-
-                          
-                        </div>
-
                       </form>
+
                       
                     </div>
                   </div>

@@ -2,7 +2,8 @@
     session_start();
     
 
-    include_once "../inc/config.php"; 
+    include_once "../inc/config.php";
+    $pagetitle = "Dashboard";
     include_once "../inc/drc.php"; 
 
     
@@ -15,7 +16,7 @@
         
     }
     
-    $pagetitle = "Dashboard";
+    
     
     include_once "adm-head.php"; 
     include_once "adm-header.php"; 

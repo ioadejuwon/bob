@@ -1,4 +1,5 @@
 <?php 
+include_once "inc/config.php";
 include_once "inc/drc.php";
 
 $pagetitle = "Shop - ";
@@ -7,12 +8,8 @@ include_once "header.php"
 
 ?>
 
-
-    
-
-
-      <section data-anim="fade" class="breadcrumbs ">
-        <div class="container">
+      <section data-anim="fade" class="breadcrumbs d-none">
+        <div class="container ">
           <div class="row">
             <div class="col-auto">
               <div class="breadcrumbs__content">
@@ -40,21 +37,18 @@ include_once "header.php"
       </section>
 
 
-      <section class="page-header -type-1">
+      <section class="page-header -type-1 mt-60 bg-deep-green-1 text-white">
+        
         <div class="container">
           <div class="page-header__content">
-            <div class="row justify-center text-center">
-              <div class="col-auto">
+            <div class="row justify-cente text-left">
+              <div class="col-auto pt-30 pb-30">
                 <div data-anim="slide-up delay-1">
-
-                  <h1 class="page-header__title">Shop List</h1>
-
+                  <h1 class="page-header__title text-white">Our Collection</h1>
                 </div>
 
                 <div data-anim="slide-up delay-2">
-
-                  <p class="page-header__text">We’re on a mission to deliver engaging, curated courses at a reasonable price.</p>
-
+                  <p class="page-header__text">We’re on a mission to deliver Comfortable Clothing at a reasonable price.</p>
                 </div>
               </div>
             </div>
@@ -206,12 +200,30 @@ include_once "header.php"
               </div>
 
               <div class="row y-gap-30 pt-30">
+              <?php 
+                  $prodsql = mysqli_query($conn, "SELECT * FROM products");
+                  while ($row_prod = mysqli_fetch_assoc($prodsql)) {
+                      $product_name = $row_prod['producttitle']; // Assuming the column name for the product name is 'product_name'
+                      $price = $row_prod['price']; // Assuming the column name for the original price is 'original_price'
+                      $dis_price = $row_prod['discount_price']; // Assuming the column name for the discounted price is 'discounted_price'
+                      $original_price = '&#8358;' . number_format($price);
+                      $discounted_price = '&#8358;' . number_format($dis_price);
+
+                      $product_id = $row_prod['productid'];
+
+                      $prodsql_img = mysqli_query($conn, "SELECT * FROM product_images WHERE thumbnail = 1 AND product_id = '$product_id'");
+                        $row_prod_img = mysqli_fetch_assoc($prodsql_img);
+                        // while ($row_prod_img = mysqli_fetch_assoc($prodsql_img)) {
+                        $image_path = $row_prod_img['image_path'];
+                        $image_id = $row_prod_img['img_id'];
+                        // $is_thumbnail = $row_prod_img['thumbnail'] == 1 ? 'thumbnail-selected' : '';
+                      
+                  ?>
+
                 <div class="col-lg-3 col-sm-6">
                   <div class="productCard -type-1 text-center">
 
                     <div class="productCard__image">
-
-
                         <div class="d-flex justify-between py-10 px-10 absolute-full-center z-3">
                           <div>
                             <div class="px-10 rounded-8 bg-orange-1">
@@ -226,10 +238,9 @@ include_once "header.php"
                           </div>
 
                         </div>
-                
 
                         <div class="ratio ratio-63:57">
-                          <img class="absolute-full-center rounded-8" src="assets/img/shop/single/1.png" alt="project image">
+                          <img class="absolute-full-center rounded-8" src="<?php echo $image_path; ?>" alt="product image">
                         </div>
                         <!-- <img src="assets/img/shop/products/1.png" alt="Product image"> -->
                         
@@ -252,8 +263,8 @@ include_once "header.php"
                     </div>
                     <div class="productCard__content mt-20">
                       
-                      <h4 class="text-17 fw-500 mt-15">Wall Clock Brown</h4>
-                      <div class="text-17 fw-500 text-deep-green-1 mt-15"> <span class="line-through opac-50 text-14">$55.00</span> $55.00</div>
+                      <h4 class="text-17 fw-500 mt-15"><?php echo $product_name ?></h4>
+                      <div class="text-17 fw-500 text-deep-green-1 mt-15"> <span class="line-through opac-50 text-14"><?php echo $discounted_price ?></span> <?php echo $original_price ?></div>
 
                       <div class="productCard__button d-inline-block">
                         <a href="#" class="button -md -outline-deep-green-1 text-dark-1 mt-15">Add To Cart</a>
@@ -261,6 +272,10 @@ include_once "header.php"
                     </div>
                   </div>
                 </div>
+
+                <?php
+                  }
+                ?>
               </div>
 
               <div class="row justify-center pt-60 lg:pt-40">

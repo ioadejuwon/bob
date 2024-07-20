@@ -13,7 +13,7 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     
     
     define('SIGNUP', BASE_URL.'signup.php');
-    define('SHOP', BASE_URL.'shop/index.php');
+    define('SHOP', BASE_URL.'shop.php');
 
     define('ADMIN_LOGIN', ADMIN_URL.'login.php');
     define('DASHBOARD', ADMIN_URL.'dashboard.php');

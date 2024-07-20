@@ -126,43 +126,60 @@
                                 $dis_price = $row_prod['discount_price']; // Assuming the column name for the discounted price is 'discounted_price'
                                 $original_price = '&#8358;' . number_format($price);
                                 $discounted_price = '&#8358;' . number_format($dis_price);
-
                                 $product_id = $row_prod['productid'];
 
-                                $prodsql_img = mysqli_query($conn, "SELECT * FROM product_images WHERE thumbnail = 1 AND product_id = '$product_id'");
-                                  $row_prod_img = mysqli_fetch_assoc($prodsql_img);
-                                  // while ($row_prod_img = mysqli_fetch_assoc($prodsql_img)) {
-                                  $image_path = '../'.$row_prod_img['image_path'];
-                                  $image_id = $row_prod_img['img_id'];
-                                  // $is_thumbnail = $row_prod_img['thumbnail'] == 1 ? 'thumbnail-selected' : '';
+                                // Get the thumbnail image
+                                $prodsql_img_thumbnail = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id' AND thumbnail = 1");
+                                $row_prod_img_thumbnail = mysqli_fetch_assoc($prodsql_img_thumbnail);
+                                $image_path_thumbnail = '../'.$row_prod_img_thumbnail['image_path'];
+
+                                // Get the non-thumbnail images
+                                $prodsql_img = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id' AND thumbnail = 0");
+                                $other_images = [];
+                                while ($row_prod_img = mysqli_fetch_assoc($prodsql_img)) {
+                                    $other_images[] = '../'.$row_prod_img['image_path'];
+                                }
+                            ?>
+                            <!-- You can use $other_images array here if needed -->
+                                <!-- For example, to display other images -->
                                 
+                                
+                                <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/1">
+                                    <div class="productCard -type-1 text-center">
+                                        <div class="productCard__image">
+                                            <div class="ratio ratio-63:57">
+                                                <img class="absolute-full-center rounded-8" src="<?php echo $image_path_thumbnail; ?>" alt="product image">
+                                            </div>
+                                            <div class="productCard__controls z-3">
+                                                <a href="#" class="productCard__icon">
+                                                    <i class="fa-regular fa-send"></i>
+                                                </a>
+                                                <a data-barba href="<?php echo $image_path_thumbnail; ?>" class="gallery__item js-gallery productCard__icon" data-gallery="<?php echo $product_id ?>">
+                                                    <i class="fa-regular fa-eye"></i>
+                                                </a>
+                                                
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <div class="productCard__content mt-20">
+                                            <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
+                                            <div class="text-17 fw-500 text-deep-green-1 mt-15">
+                                                <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <?php foreach ($other_images as $image_path): ?>
+                                  <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery " data-gallery="<?php echo $product_id ?>"></a>
+                                <?php endforeach; ?>
+                                </div>
+
+                                
+                            <?php 
+                            }
                             ?>
 
-                            <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/1">
-                                <div class="productCard -type-1 text-center">
-                                    <div class="productCard__image">
-                                        <div class="ratio ratio-63:57">
-                                            <img class="absolute-full-center rounded-8" src="<?php echo $image_path; ?>" alt="product image">
-                                        </div>
-                                        <div class="productCard__controls z-3">
-                                            <a href="#" class="productCard__icon">
-                                                <i class="fa-regular fa-send"></i>
-                                            </a>
-                                            <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery productCard__icon" data-gallery="gallery1">
-                                                <i class="fa-regular fa-eye"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="productCard__content mt-20">
-                                        <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
-                                        <div class="text-17 fw-500 text-deep-green-1 mt-15">
-                                            <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <?php } ?>
 
 
 

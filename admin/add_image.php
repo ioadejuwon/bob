@@ -5,20 +5,26 @@
     session_start();
   
     include_once "../inc/config.php"; 
-    $pagetitle = "Add New Course";
+    $pagetitle = "Add New Product";
     include_once "../inc/drc.php"; 
 
     
+    $product_id = $_GET['productid'];
+
+    $products_num = mysqli_query($conn, "SELECT * FROM products WHERE productid = '$product_id'");
+    // $prod_categories = mysqli_fetch_assoc($products_cat);
+    $count_row_product = mysqli_num_rows($products_num);
 
     if(!isset($_SESSION['user_id'])){
       header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
       exit; // Make sure to exit after sending the redirection header
+    }elseif($product_id == '' || $count_row_product < 1){
+      header("location: ".PRODUCTS);// redirect to login page if not signed in
     }else{
         $user_id = $_SESSION['user_id'];
-        
     }
   
-  $pagetitle = "Add New Product";
+  
   
   include_once "adm-head.php"; 
   include_once "adm-header.php"; 
