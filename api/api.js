@@ -45,52 +45,74 @@ $(document).ready(function() {
     });
     // Add category to the Database end
 
-
+    // Add product to the database Begin
     $('#productFormSubmit').click(function(e) {
-    e.preventDefault();
+        e.preventDefault();
 
-    // Clear previous error messages
-    $('#error-message').text('');
+        // Clear previous error messages
+        $('#error-message').text('');
 
-    // Validate form fields
-    let isValid = true;
-    $('#product-details-form').find('input[required], textarea[required], select[required]').each(function() {
-        if ($(this).val() === '') {
-            isValid = false;
-            $(this).addClass('error');  // Add a class to highlight the error (you can style it in CSS)
-        } else {
-            $(this).removeClass('error');
-        }
-    });
-
-    if (!isValid) {
-        $('#error-message').text('Please, fill all required fields.');
-        return;
-    }
-
-    // Proceed with AJAX request if validation passes
-    $.ajax({
-        url: '../api/upload_product_details.php',
-        type: 'POST',
-        data: $('#product-details-form').serialize(),
-        success: function(response) {
-            const result = JSON.parse(response);
-            if (result.success) {
-                window.location.href = 'add_image.php?productid=' + result.product_id;
+        // Validate form fields
+        let isValid = true;
+        $('#product-details-form').find('input[required], textarea[required], select[required]').each(function() {
+            if ($(this).val() === '') {
+                isValid = false;
+                $(this).addClass('error');  // Add a class to highlight the error (you can style it in CSS)
             } else {
-                $('#error-message').html('An error occurred: ' + result.message);
+                $(this).removeClass('error');
             }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            $('#error-message').html('An error occurred: ' + textStatus + ' - ' + errorThrown);
+        });
+
+        if (!isValid) {
+            $('#error-message').text('Please, fill all required fields.');
+            return;
         }
+
+        // Proceed with AJAX request if validation passes
+        $.ajax({
+            url: '../api/upload_product_details.php',
+            type: 'POST',
+            data: $('#product-details-form').serialize(),
+            success: function(response) {
+                const result = JSON.parse(response);
+                if (result.success) {
+                    window.location.href = 'add_image.php?productid=' + result.product_id;
+                } else {
+                    $('#error-message').html('An error occurred: ' + result.message);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                $('#error-message').html('An error occurred: ' + textStatus + ' - ' + errorThrown);
+            }
+        });
     });
-});
-
-    
-
     // Add product to the database end
-    
+
+
+    $('#productFormUpdate').click(function(event) {
+        event.preventDefault();
+
+        var formData = $('#product-details-update').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: '../api/update_product.php',
+            data: formData,
+            success: function(response) {
+                var jsonResponse = JSON.parse(response);
+                if (jsonResponse.success) {
+                    // alert('Product updated successfully!');
+                    $('#success-message').text(jsonResponse.message);
+                } else {
+                    $('#error-message').text(jsonResponse.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                $('#error-message').text('An error occurred: ' + error);
+            }
+        });
+    });
+
 });
 
 // Set Thumbnail for the product begin
@@ -167,3 +189,43 @@ Dropzone.options.productImagesDropzone = {
 };
 
 // Dropzone for image upload end
+
+
+
+Dropzone.options.editImagesDropzone = {
+    paramName: 'file', // The name that will be used to transfer the file
+    autoProcessQueue: false, // Disable automatic upload
+    parallelUploads: 10,
+    maxFilesize: 3, // MB
+    acceptedFiles: '.png,.jpg,.jpeg,.gif',
+    addRemoveLinks: true,
+    success: function(file, response) {
+        console.log('File uploaded successfully:', response);
+
+        if (response.status === 'success') {
+            document.getElementById('success-message').innerText = response.message;
+            document.getElementById('success-message').style.display = 'block';
+            // Optionally redirect after displaying success message
+            // window.location.href = 'thumbnail.php?productid=' + response.product_id;
+        } else {
+            document.getElementById('error-message').innerText = response.message;
+            document.getElementById('error-message').style.display = 'block';
+        }
+    },
+    error: function(file, response) {
+        document.getElementById('error-message').innerText = response.message || 'An error occurred during the upload.';
+        document.getElementById('error-message').style.display = 'block';
+    },
+    init: function() {
+        const submitButton = document.querySelector("#upload-button");
+        const myDropzone = this;
+
+        submitButton.addEventListener("click", function() {
+            myDropzone.processQueue();
+        });
+
+        this.on("sending", function(file, xhr, formData) {
+            formData.append("product_id", document.getElementById('product_id').value);
+        });
+    }
+};

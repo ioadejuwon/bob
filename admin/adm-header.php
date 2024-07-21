@@ -36,16 +36,16 @@
             <div class="d-flex items-center sm:d-non">
 
                 <div class="relative">
-                    <a href="#" class="d-flex items-center text-light-1 justify-center size-50 rounded-16 -hover-dshb-header-light" data-el-toggle=".js-msg-toggle">
+                    <div  class="d-flex items-center text-light-1 justify-center size-50 rounded-16 -hover-dshb-header-light" data-el-toggle=".js-msg-toggle">
                         <i class="text-24 icon icon-email"></i>
-                    </a>
+                    </div>
                 </div>
                 
 
                 <div class="relative">
-                    <a href="#" class="d-flex items-center text-light-1 justify-center size-50 rounded-16 -hover-dshb-header-light" data-el-toggle=".js-notif-toggle">
+                    <div  class="d-flex items-center text-light-1 justify-center size-50 rounded-16 -hover-dshb-header-light" data-el-toggle=".js-notif-toggle">
                         <i class="text-24 icon icon-notification"></i>
-                    </a>
+                    </div>
 
                     <div class="toggle-element js-notif-toggle" >
                         <div class="toggle-bottom -notifications bg-white -dark-bg-dark-1 shadow-4 border-light rounded-8 mt-10">
@@ -110,9 +110,9 @@
             </div>
 
             <div class="relative d-flex items-center ml-10">
-                <a href="#" data-el-toggle=".js-profile-toggle">
+                <div  data-el-toggle=".js-profile-toggle">
                 <img class="size-50" src="../assets/img/misc/user-profile.png" alt="image">
-                </a>
+                </div>
 
                 <div class="toggle-element js-profile-toggle"  >
                 <div class="toggle-bottom -profile bg-white -dark-bg-dark-1 shadow-4 border-light rounded-8 mt-10">

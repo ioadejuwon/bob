@@ -66,7 +66,7 @@
               <div class="row y-gap-30">
                 <div class="col-12">
                   <div class="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
-                    <div class="tabs -active-purple-2 js-tabs pt-0">
+                    <div class="tabs -active-deep-green-2 js-tabs pt-0">
                       <div class="tabs__controls d-flex x-gap-30 items-center pt-20 px-30 border-bottom-light js-tabs-controls">
                         <button class="tabs__button text-light-1 js-tabs-button is-active" data-tab-target=".-tab-item-0" type="button">
                           Profile
@@ -263,7 +263,7 @@
 
 
                               <div class="col-12">
-                                <button class="button -md -terabyte-1 text-white">Update Profile</button>
+                                <button class="button -md -deep-green-1 text-white">Update Profile</button>
                               </div>
                             </form>
                           </div>

@@ -23,6 +23,9 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     define('PRODUCTS', ADMIN_URL.'products.php');
     define('PROFILE', ADMIN_URL.'profile.php');
     define('ADD_IMAGE', ADMIN_URL.'add_image.php');
+    define('EDIT_PRODUCT', ADMIN_URL.'editproduct.php');
+    define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail.php');
+    define('EDIT_IMAGES', ADMIN_URL.'editimages.php');
     
 
     define('LOGOUT', BASE_URL.'logout.php?id='.$user_id); // Logout Link
@@ -36,6 +39,7 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     define('SIGNUP', BASE_URL.'signup');
     define('SHOP', BASE_URL.'shop');
     define('PRODUCT_DETAIILS', BASE_URL.'product');
+    
 
     define('ADMIN_LOGIN', ADMIN_URL.'login');
     define('DASHBOARD', ADMIN_URL.'dashboard');
@@ -44,6 +48,9 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     define('PRODUCTS', ADMIN_URL.'products');
     define('PROFILE', ADMIN_URL.'profile');
     define('ADD_IMAGE', ADMIN_URL.'add_image');
+    define('EDIT_PRODUCT', ADMIN_URL.'editproduct');
+    define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail');
+    define('EDIT_IMAGES', ADMIN_URL.'editimages');
 
     define('LOGOUT', BASE_URL.'logout.php?id='.$user_id); // Logout Link
 }

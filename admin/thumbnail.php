@@ -39,7 +39,6 @@
         $user_id = $_SESSION['user_id'];
     }
   
-  $pagetitle = "Add New Product";
   
   include_once "adm-head.php"; 
   // include_once "adm-header.php"; 

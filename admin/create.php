@@ -104,7 +104,7 @@
 
                         <div class="col-12">
                             <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Short Description <span class="text-red-1">*</span></label>
-                            <textarea placeholder="Short Description" rows="7" name="shortdescription" value="<?php echo $shortdescription ?>" required></textarea>
+                            <textarea placeholder="Short Description" rows="4" name="shortdescription" value="<?php echo $shortdescription ?>" required></textarea>
                         </div>
 
                         <div class="col-12">

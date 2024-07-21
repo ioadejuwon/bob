@@ -1,6 +1,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
-
+<style>
+   .dropzone {
+      border: 1px dashed #21565e;
+      border-radius: 8px;
+      /* padding: 20px; */
+      text-align: center;
+    }
+</style>
 <?php 
     session_start();
   
@@ -76,13 +83,13 @@
 
                       <div class="row justify-end">
                           
-                          <div id="error-message"></div>
-                          <div class="col-auto">
-                            <button class="button -md -deep-green-1 text-white" type="submit" id="upload-button">
-                              Upload Product
-                            </button>
-                          </div>
+                        <div id="error-message"></div>
+                        <div class="col-auto">
+                          <button class="button -md -deep-green-1 text-white" type="submit" id="upload-button">
+                            Upload Product
+                          </button>
                         </div>
+                      </div>
 
 
                       

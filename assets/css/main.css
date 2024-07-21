@@ -7677,7 +7677,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tabs.-active-deep-green-2 .tabs__controls .tabs__button.is-active {
-  color: var(--color-deep-green-1) !important;
+  color: var(--color-deep-green-1) !important; 
 }
 
 .tabs.-active-deep-green-2 .tabs__controls .tabs__button.is-active::after {
