@@ -59,7 +59,7 @@
     <link rel="stylesheet" href="../assets/css/vendors.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css"> -->
     <!-- <link rel="stylesheet" href="../assets/css/component.css"> -->
 
     <!-- Page loading scripts-->

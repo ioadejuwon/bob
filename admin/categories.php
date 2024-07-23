@@ -49,19 +49,14 @@
               <div class="row pb-50 mb-10">
                 <div class="col-auto">
 
-                  <h1 class="text-30 lh-12 fw-700">Course Categories</h1>
+                  <h1 class="text-30 lh-12 fw-700">Product Categories</h1>
 
                   <div class="breadcrumbs mt-10 pt-0 pb-0">
                     <div class="breadcrumbs__content">
                       <div class="breadcrumbs__item">
-                        <a href="index.html">Home</a>
+                        Manage your Categories here
                       </div>
-                      <div class="breadcrumbs__item">
-                        <a href="<?php CATEGORIES ?>">Categories</a>
-                      </div>
-                      <div class="breadcrumbs__item">
-                        <a href="<?php DASHBOARD ?>">Dashboard</a>
-                      </div>
+                      
                       
                     </div>
                   </div>
