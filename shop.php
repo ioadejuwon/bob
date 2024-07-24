@@ -257,8 +257,8 @@ include_once "header.php"
                             </div>
 
                             <?php foreach ($other_images as $image_path): ?>
-                          <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery " data-gallery="<?php echo $product_id ?>"></a>
-                        <?php endforeach; ?>
+                              <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery " data-gallery="<?php echo $product_id ?>"></a>
+                            <?php endforeach; ?>
                         </div>
 
                         
