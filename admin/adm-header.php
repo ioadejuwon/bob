@@ -21,10 +21,10 @@
 
             <div class="header__logo ml-30 md:ml-20">
                 <a data-barba href="<?php echo BASE_URL ?>">
-                <!-- <img class="-light-d-none" src="../assets/img/general/logo_wh.svg" alt="logo"> -->
-                <!-- <img class="-dark-d-none no-big-screen" src="../assets/img/general/icon_ab.png" alt="logo" width="50px"> -->
-                <!-- <img class="-dark-d-none lg:d-none" src="../assets/img/general/logo2_ab.svg" alt="logo"> -->
-                <!-- <img class="-dark-d-none  sm:d-block" src="../assets/img/general/logo_ab.png" alt="logo" style="width:25%"> -->
+                <!-- <img class="-light-d-none" src="assets/img/general/logo_wh.svg" alt="logo"> -->
+                <!-- <img class="-dark-d-none no-big-screen" src="assets/img/general/icon_ab.png" alt="logo" width="50px"> -->
+                <!-- <img class="-dark-d-none lg:d-none" src="assets/img/general/logo2_ab.svg" alt="logo"> -->
+                <!-- <img class="-dark-d-none  sm:d-block" src="assets/img/general/logo_ab.png" alt="logo" style="width:25%"> -->
                 </a>
             </div>
             </div>
@@ -54,7 +54,7 @@
 
                             <div class="d-flex items-center ">
                                 <div class="shrink-0">
-                                <img src="../assets/img/dashboard/actions/1.png" alt="image">
+                                <img src="assets/img/dashboard/actions/1.png" alt="image">
                                 </div>
                                 <div class="ml-12">
                                 <h4 class="text-15 lh-1 fw-500">Your resume updated!</h4>
@@ -64,7 +64,7 @@
 
                             <div class="d-flex items-center border-top-light">
                                 <div class="shrink-0">
-                                <img src="../assets/img/dashboard/actions/2.png" alt="image">
+                                <img src="assets/img/dashboard/actions/2.png" alt="image">
                                 </div>
                                 <div class="ml-12">
                                 <h4 class="text-15 lh-1 fw-500">You changed password</h4>
@@ -74,7 +74,7 @@
 
                             <div class="d-flex items-center border-top-light">
                                 <div class="shrink-0">
-                                <img src="../assets/img/dashboard/actions/3.png" alt="image">
+                                <img src="assets/img/dashboard/actions/3.png" alt="image">
                                 </div>
                                 <div class="ml-12">
                                 <h4 class="text-15 lh-1 fw-500">Your account has been created successfully</h4>
@@ -84,7 +84,7 @@
 
                             <div class="d-flex items-center border-top-light">
                                 <div class="shrink-0">
-                                <img src="../assets/img/dashboard/actions/4.png" alt="image">
+                                <img src="assets/img/dashboard/actions/4.png" alt="image">
                                 </div>
                                 <div class="ml-12">
                                 <h4 class="text-15 lh-1 fw-500">You applied for a job Front-end Developer</h4>
@@ -94,7 +94,7 @@
 
                             <div class="d-flex items-center border-top-light">
                                 <div class="shrink-0">
-                                <img src="../assets/img/dashboard/actions/5.png" alt="image">
+                                <img src="assets/img/dashboard/actions/5.png" alt="image">
                                 </div>
                                 <div class="ml-12">
                                 <h4 class="text-15 lh-1 fw-500">Your course uploaded successfully</h4>
@@ -111,7 +111,8 @@
 
             <div class="relative d-flex items-center ml-10">
                 <div  data-el-toggle=".js-profile-toggle">
-                <img class="size-50" src="../assets/img/misc/user-profile.png" alt="image">
+                    <img class="size-50" src="assets/img/misc/user-profile.png" alt="image">
+                     I
                 </div>
 
                 <div class="toggle-element js-profile-toggle"  >

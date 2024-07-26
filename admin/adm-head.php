@@ -65,7 +65,7 @@
 
     <!-- Page loading scripts-->
     <script src="../assets/js/page-loader.js"></script>
-    <title><?php echo $pagetitle; ?> - Terabyte</title>
+    <title><?php echo $pagetitle; ?>  - Build With Bob</title>
 
     
 </head>

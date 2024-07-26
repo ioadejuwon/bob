@@ -10,7 +10,7 @@
 
               <div class="header__logo ">
                 <a data-barba href="index.html">
-                  <img src="assets/img/general/logo-dark.svg" alt="logo">
+                  <img src="admin/assets/img/general/logo-dark.svg" alt="logo">
                 </a>
               </div>
 
@@ -202,7 +202,9 @@
                
 
                        
-
+                      <li>
+                          <a data-barba href="contact-1.html">Contact</a>
+                        </li>
                         <li>
                           <a data-barba href="contact-1.html">Contact</a>
                         </li>
@@ -265,7 +267,7 @@
                           <div class="col">
                             <div class="row x-gap-10 y-gap-10">
                               <div class="col-auto">
-                                <img src="assets/img/menus/cart/1.png" alt="image">
+                                <img src="admin/assets/img/menus/cart/1.png" alt="image">
                               </div>
 
                               <div class="col">
@@ -280,7 +282,7 @@
                           </div>
 
                           <div class="col-auto">
-                            <button><img src="assets/img/menus/close.svg" alt="icon"></button>
+                            <button><img src="admin/assets/img/menus/close.svg" alt="icon"></button>
                           </div>
                         </div>
 
@@ -288,7 +290,7 @@
                           <div class="col">
                             <div class="row x-gap-10 y-gap-10">
                               <div class="col-auto">
-                                <img src="assets/img/menus/cart/2.png" alt="image">
+                                <img src="admin/assets/img/menus/cart/2.png" alt="image">
                               </div>
 
                               <div class="col">
@@ -303,7 +305,7 @@
                           </div>
 
                           <div class="col-auto">
-                            <button><img src="assets/img/menus/close.svg" alt="icon"></button>
+                            <button><img src="admin/assets/img/menus/close.svg" alt="icon"></button>
                           </div>
                         </div>
 
