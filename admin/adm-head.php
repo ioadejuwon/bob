@@ -17,8 +17,8 @@
 
     <meta name="description" content="Learn the best way possible." />
     
-    <meta property="og:title" content="<?php echo $pagetitle.' - Terabyte' ?>"/>
-    <meta property="og:url" content="https://terabyte.africa"/>
+    <meta property="og:title" content="<?php echo $pagetitle.' - Build With Bob' ?>"/>
+    <meta property="og:url" content="https://buildwithbob.shop"/>
     <meta name="og:description" content="Learn the best way possible." />
 
     <meta name="twitter:site" content="@jointerabyte"/>
@@ -52,14 +52,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/unpkg.com/leaflet%401.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../assets/css/vendors.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
     <!-- <link rel="stylesheet" href="../assets/css/component.css"> -->
 
     <!-- Page loading scripts-->
