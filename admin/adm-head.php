@@ -38,33 +38,33 @@
     <meta name="viewport" content="height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/general/icon_ab.png">
-    <link rel="icon" type="image/png" href="../assets/img/general/icon_ab.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/general/icon_ab.png">
+    <link rel="icon" type="image/png" href="assets/img/general/icon_ab.png">
     <!-- <link rel="manifest" href="favicon/site.html"> -->
-    <link rel="mask-icon" href="../assets/img/general/icon_ab.png" color="#0010f7">
+    <link rel="mask-icon" href="assets/img/general/icon_ab.png" color="#0010f7">
 
     <!-- Google fonts -->
-    <link rel="preconnect" href="../assets/fonts.googleapis.com/index.html">
-    <link rel="preconnect" href="../assets/fonts.gstatic.com/index.html" crossorigin>
-    <link href="../assets/fonts.googleapis.com/css2dec5.css?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="assets/fonts.googleapis.com/index.html">
+    <link rel="preconnect" href="assets/fonts.gstatic.com/index.html" crossorigin>
+    <link href="assets/fonts.googleapis.com/css2dec5.css?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
 
-    <link href="../assets/fonts.googleapis.com/css2f511.css?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="assets/fonts.googleapis.com/css2f511.css?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../assets/unpkg.com/leaflet%401.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <link rel="stylesheet" href="assets/unpkg.com/leaflet%401.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
     
 
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../assets/css/vendors.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/vendors.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="../assets/css/component.css"> -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="assets/css/component.css"> -->
 
     <!-- Page loading scripts-->
-    <script src="../assets/js/page-loader.js"></script>
+    <script src="assets/js/page-loader.js"></script>
     <title><?php echo $pagetitle; ?>  - Build With Bob</title>
 
     
