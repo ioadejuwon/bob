@@ -1,11 +1,11 @@
 <style>
   .thumbnail-selected {
     background-color: #21565e !important; /* Green background color */
-    color: white !important; /* White checkmark color */
+    color: white; /* White checkmark color */
 }
 
 .thumbnail-selected .fa-check {
-    color: white !important; /* Ensure the checkmark icon is white */
+    color: white; /* Ensure the checkmark icon is white */
 }
 
 </style>

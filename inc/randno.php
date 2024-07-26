@@ -5,10 +5,12 @@ include_once "config.php";
 
 
 
-$n=10; //File renaming unique
-$k=7; //User ID for new accounts 
+
 $j=3; //Category ID for product categories
+$k=7; //User ID for new accounts 
 $l=3; //Product ID for products
+$m=3; //cart ID for add_to_cart
+$n=10; //File renaming unique
 
 
 

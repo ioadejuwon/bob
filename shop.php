@@ -225,7 +225,8 @@ include_once "header.php"
                         
                                 
                         <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/2">
-                            <div class="productCard -type-1 text-center">
+
+                            <div class="productCard -type-1 text-center" data-product-id="<?php echo $product_id; ?>" data-price="<?php echo $price; ?>">
                                 <div class="productCard__image">
                                     <div class="ratio ratio-63:57">
                                         <img class="absolute-full-center rounded-8" src="<?php echo $image_path_thumbnail; ?>" alt="product image">
@@ -237,13 +238,10 @@ include_once "header.php"
                                         <a data-barba href="<?php echo $image_path_thumbnail; ?>" class="gallery__item js-gallery productCard__icon" data-gallery="<?php echo $product_id ?>">
                                             <i class="fa-regular fa-images"></i>
                                         </a>
-                                        <a href="<?php echo PRODUCT_DETAIILS.'?id='.$product_id; ?>"  class="productCard__icon">
+                                        <a href="<?php echo PRODUCT_DETAIILS.'?id='.$product_id; ?>" class="productCard__icon">
                                             <i class="fa-regular fa-eye"></i>
-                                        </a>
-                                        
+                                        </a>    
                                     </div>
-                                    
-                                    
                                 </div>
                                 <div class="productCard__content mt-20">
                                     <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
@@ -251,10 +249,11 @@ include_once "header.php"
                                         <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
                                     </div>
                                     <div class="productCard__button d-inline-block">
-                                      <a href="#" class="button -md -outline-deep-green-1 text-dark-1 mt-15">Add To Cart</a>
+                                        <button type="button" class="button -md -outline-deep-green-1 text-dark-1 mt-15 toggle-cart">Add To Cart</button>
                                     </div>
                                 </div>
                             </div>
+
 
                             <?php foreach ($other_images as $image_path): ?>
                               <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery " data-gallery="<?php echo $product_id ?>"></a>

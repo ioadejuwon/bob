@@ -1,3 +1,11 @@
+function generateUUID() {
+    return 'cart-xxy-4xx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
 $(document).ready(function() {
     
     // Add category to the Database begin
@@ -88,7 +96,7 @@ $(document).ready(function() {
     });
     // Add product to the database end
 
-
+    // Edit product in the database Begin
     $('#productFormUpdate').click(function(event) {
         event.preventDefault();
 
@@ -112,6 +120,89 @@ $(document).ready(function() {
             }
         });
     });
+    // Edit product in the database end
+
+    // Retrieve or create a cart_id
+    let cartId = localStorage.getItem('BWB_cart_id');
+    if (!cartId) {
+        cartId = generateUUID();
+        localStorage.setItem('BWB_cart_id', cartId);
+    }
+
+    // Load cart from local storage
+    let cart = JSON.parse(localStorage.getItem('BWB_cart')) || [];
+
+    // Function to check if product is in cart
+    function isProductInCart(productId) {
+        return cart.some(item => item.product_id === productId && item.cart_id === cartId);
+    }
+
+    // Attach click event to all toggle-cart buttons
+    $('.toggle-cart').on('click', function() {
+        const productCard = $(this).closest('.productCard');
+        const productId = productCard.data('product-id');
+        const price = productCard.data('price');
+
+        const productData = {
+            cart_id: cartId,
+            price: price,
+            product_id: productId
+        };
+
+        if (isProductInCart(productId)) {
+            // Remove from cart
+            // cart = cart.filter(item => item.product_id !== productId);
+            cart = cart.filter(item => !(item.cart_id === cartId && item.product_id === productId));
+            localStorage.setItem('BWB_cart', JSON.stringify(cart));
+
+            // Send removal request to server
+            $.ajax({
+                url: 'api/remove_from_cart.php', // Replace with your server endpoint for removing
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ cart_id: cartId, product_id: productId }),
+                success: function(response) {
+                    console.log('Removed from cart:', response);
+                    $(this).text('Add To Cart');
+                }.bind(this),
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        } else {
+            // Add to cart
+            cart.push(productData);
+            localStorage.setItem('BWB_cart', JSON.stringify(cart));
+
+            // Send addition request to server
+            $.ajax({
+                url: 'api/add_to_cart.php', // Replace with your server endpoint
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(productData),
+                success: function(response) {
+                    console.log('Added to cart:', response);
+                    $(this).text('Remove From Cart');
+                }.bind(this),
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    });
+
+    // Update button text based on the cart state on page load
+    $('.productCard').each(function() {
+        const productId = $(this).data('product-id');
+        const button = $(this).find('.toggle-cart');
+
+        if (isProductInCart(productId)) {
+            button.text('Remove From Cart');
+        } else {
+            button.text('Add To Cart');
+        }
+    });
+
 
 });
 
@@ -145,9 +236,7 @@ document.querySelectorAll('.thumbnail-form').forEach(form => {
         });
     });
 });
-
 // Set Thumbnail for the product end
-
 
 // Dropzone for image upload begin
 Dropzone.options.productImagesDropzone = {
@@ -187,11 +276,9 @@ Dropzone.options.productImagesDropzone = {
         });
     }
 };
-
 // Dropzone for image upload end
 
-
-
+// Dropzone for edit image begin
 Dropzone.options.editImagesDropzone = {
     paramName: 'file', // The name that will be used to transfer the file
     autoProcessQueue: false, // Disable automatic upload
@@ -229,3 +316,7 @@ Dropzone.options.editImagesDropzone = {
         });
     }
 };
+// Dropzone for edit image end
+
+
+

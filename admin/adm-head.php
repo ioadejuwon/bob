@@ -65,6 +65,7 @@
 
     <!-- Page loading scripts-->
     <script src="assets/js/page-loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title><?php echo $pagetitle; ?>  - Build With Bob</title>
 
     

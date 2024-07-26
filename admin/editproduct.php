@@ -9,7 +9,7 @@
 }
 
 </style>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <?php 
     session_start();
     
@@ -142,12 +142,12 @@
                                               <div class="d-flex justify-center items-center z-3">
                                                 <!-- <div class="icon-bin text-16"></div> -->
                                                 <form id="thumbnail-form-<?php echo $image_id; ?>" class="thumbnail-form">
-                                                <input type="hidden" name="image_id" value="<?php echo $image_id; ?>">
-                                                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
-                                                <button type="submit" class="d-flex justify-center items-center text-deep-green bg-light-3 -outline-deep-green-1 size-30 rounded-8 shadow-1 <?php echo $is_thumbnail; ?>">
-                                                    <i class="fa fa-check text-16"></i>
-                                                </button>
-                                            </form>
+                                                    <input type="hidden" name="image_id" value="<?php echo $image_id; ?>">
+                                                    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                                                    <button type="submit" class="d-flex justify-center items-center text-deep-green bg-light-3 -outline-deep-green-1 size-30 rounded-8 shadow-1 <?php echo $is_thumbnail; ?>">
+                                                        <i class="fa fa-check text-16"></i>
+                                                    </button>
+                                                </form>
                                                 
                                               </div>
                                             </div>

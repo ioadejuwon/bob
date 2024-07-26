@@ -10,7 +10,6 @@
     <meta name="author" content="MartVille Technologies">
 
     <meta name="description" content="Learn the best way possible." />
-    
     <meta property="og:title" content="<?php echo $pagetitle.'Bob the Builder' ?>"/>
     
     <meta property="og:url" content="https://buildwithbob.shop"/>
@@ -58,6 +57,7 @@
 
     <!-- Page loading scripts-->
     <script src="admin/assets/js/page-loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title><?php echo $pagetitle; ?>Bob the Builder</title>
 
