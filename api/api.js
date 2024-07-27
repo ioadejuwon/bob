@@ -122,7 +122,10 @@ $(document).ready(function() {
     });
     // Edit product in the database end
 
-    // Retrieve or create a cart_id
+
+    // Cart  JS Begin
+
+    // Get or generate cart ID
     let cartId = localStorage.getItem('BWB_cart_id');
     if (!cartId) {
         cartId = generateUUID();
@@ -137,21 +140,130 @@ $(document).ready(function() {
         return cart.some(item => item.product_id === productId && item.cart_id === cartId);
     }
 
+
+    // Function to generate HTML for each cart item
+    function generateCartItemHTML(item) {
+        return `
+            <div class="row justify-between x-gap-40 pb-20" data-product-id="${item.product_id}">
+                <div class="col">
+                    <div class="row x-gap-10 y-gap-10">
+                        <div class="col-auto">
+                            <img class="size-100 rounded-8" src="${item.image_path}" alt="<?php echo $brand_name ?>">
+                        </div>
+                        
+                        <div class="col">
+                            <div class="text-dark-1 lh-15 fw-bold">${item.product_name}</div>
+                            <div class="d-flex items-center mt-10">
+                                <div class="lh-12 fw-500 line-through text-light-1 mr-10">${item.discounted_price}</div>
+                                <div class="text-18 lh-12 fw-500 text-dark-1">${item.price}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button class="remove-from-cart">
+                        <img src="admin/assets/img/menus/close.svg" alt="remove icon">
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    // Function to update the cart display
+    function updateCartDisplay() {
+        const cartContainer = $('.header-cart .px-30.pt-30.pb-10');
+
+        // Clear existing items
+        cartContainer.empty();
+
+        // Generate and append HTML for each item in the cart
+        cart.forEach(item => {
+            cartContainer.append(generateCartItemHTML(item));
+        });
+
+        // Update total price
+        const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price), 0);
+        $('#total-price').text(`$${totalPrice.toFixed(2)}`);
+    }
+
+
+
+
+
     // Attach click event to all toggle-cart buttons
+    // $('.toggle-cart').on('click', function() {
+    //     const productCard = $(this).closest('.productCard');
+    //     const productId = productCard.data('product-id');
+    //     const price = productCard.data('price');
+
+    //     const productData = {
+    //         cart_id: cartId,
+    //         price: price,
+    //         product_id: productId
+    //     };
+
+    //     if (isProductInCart(productId)) {
+    //         // Remove from cart
+    //         cart = cart.filter(item => !(item.cart_id === cartId && item.product_id === productId));
+    //         localStorage.setItem('BWB_cart', JSON.stringify(cart));
+
+    //         // Send removal request to server
+    //         $.ajax({
+    //             url: 'api/remove_from_cart.php',
+    //             type: 'POST',
+    //             contentType: 'application/json',
+    //             data: JSON.stringify({ cart_id: cartId, product_id: productId }),
+    //             success: function(response) {
+    //                 console.log('Removed from cart:', response);
+    //                 $(this).text('Add To Cart');
+    //             }.bind(this),
+    //             error: function(xhr, status, error) {
+    //                 console.error('Error removing from cart:', error);
+    //             }
+    //         });
+    //     } else {
+    //         // Add to cart
+    //         cart.push(productData);
+    //         localStorage.setItem('BWB_cart', JSON.stringify(cart));
+
+    //         // Send addition request to server
+    //         $.ajax({
+    //             url: 'api/add_to_cart.php',
+    //             type: 'POST',
+    //             contentType: 'application/json',
+    //             data: JSON.stringify(productData),
+    //             success: function(response) {
+    //                 console.log('Added to cart:', response);
+    //                 $(this).text('Added to Cart');
+    //             }.bind(this),
+    //             error: function(xhr, status, error) {
+    //                 console.error('Error adding to cart:', error);
+    //             }
+    //         });
+    //     }
+    // });
+
+
+    // Handle toggle cart button click
     $('.toggle-cart').on('click', function() {
         const productCard = $(this).closest('.productCard');
         const productId = productCard.data('product-id');
         const price = productCard.data('price');
+        const imagePath = productCard.data('image');
+        const productName = productCard.data('name');
+        const discountedPrice = productCard.data('discounted-price');
 
         const productData = {
             cart_id: cartId,
             price: price,
-            product_id: productId
+            product_id: productId,
+            image_path: imagePath,
+            product_name: productName,
+            discounted_price: discountedPrice
         };
 
         if (isProductInCart(productId)) {
             // Remove from cart
-            // cart = cart.filter(item => item.product_id !== productId);
             cart = cart.filter(item => !(item.cart_id === cartId && item.product_id === productId));
             localStorage.setItem('BWB_cart', JSON.stringify(cart));
 
@@ -164,6 +276,7 @@ $(document).ready(function() {
                 success: function(response) {
                     console.log('Removed from cart:', response);
                     $(this).text('Add To Cart');
+                    updateCartDisplay(); // Refresh cart display
                 }.bind(this),
                 error: function(xhr, status, error) {
                     console.error('Error:', error);
@@ -182,7 +295,8 @@ $(document).ready(function() {
                 data: JSON.stringify(productData),
                 success: function(response) {
                     console.log('Added to cart:', response);
-                    $(this).text('Remove From Cart');
+                    $(this).text('Added to Cart');
+                    updateCartDisplay(); // Refresh cart display
                 }.bind(this),
                 error: function(xhr, status, error) {
                     console.error('Error:', error);
@@ -191,17 +305,54 @@ $(document).ready(function() {
         }
     });
 
-    // Update button text based on the cart state on page load
-    $('.productCard').each(function() {
-        const productId = $(this).data('product-id');
-        const button = $(this).find('.toggle-cart');
 
-        if (isProductInCart(productId)) {
-            button.text('Remove From Cart');
-        } else {
-            button.text('Add To Cart');
-        }
+
+
+    // Update button text based on the cart state on page load
+    function updateButtonStates() {
+        $('.productCard').each(function() {
+            const productId = $(this).data('product-id');
+            const button = $(this).find('.toggle-cart');
+    
+            if (isProductInCart(productId)) {
+                button.text('Added to Cart');
+            } else {
+                button.text('Add To Cart');
+            }
+        });
+    }
+
+
+    // Function to handle removal of items from the cart
+    $(document).on('click', '.remove-from-cart', function() {
+        const productCard = $(this).closest('.row').data('product-id');
+        
+        // Find item to remove
+        cart = cart.filter(item => !(item.cart_id === cartId && item.product_id === productCard));
+        localStorage.setItem('BWB_cart', JSON.stringify(cart));
+
+        // Send removal request to server
+        $.ajax({
+            url: 'api/remove_from_cart.php', // Replace with your server endpoint for removing
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ cart_id: cartId, product_id: productCard }),
+            success: function(response) {
+                console.log('Removed from cart:', response);
+                updateCartDisplay(); // Refresh cart display
+                updateButtonStates(); // Update button states after removal
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
     });
+
+
+    // Populate cart display on page load
+    updateCartDisplay();
+
+    //Cart  JS End
 
 
 });
@@ -317,6 +468,3 @@ Dropzone.options.editImagesDropzone = {
     }
 };
 // Dropzone for edit image end
-
-
-

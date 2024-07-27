@@ -226,7 +226,7 @@ include_once "header.php"
                                 
                         <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/2">
 
-                            <div class="productCard -type-1 text-center" data-product-id="<?php echo $product_id; ?>" data-price="<?php echo $price; ?>">
+                            <div class="productCard -type-1 text-center" data-product-id="<?php echo $product_id; ?>" data-price="<?php echo $price; ?>" data-image="<?php echo $image_path_thumbnail; ?>" data-name="<?php echo $product_name; ?>" data-discounted-price="<?php echo $dis_price; ?>">
                                 <div class="productCard__image">
                                     <div class="ratio ratio-63:57">
                                         <img class="absolute-full-center rounded-8" src="<?php echo $image_path_thumbnail; ?>" alt="product image">
@@ -248,8 +248,8 @@ include_once "header.php"
                                     <div class="text-17 fw-500 text-deep-green-1 mt-15">
                                         <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
                                     </div>
-                                    <div class="productCard__button d-inline-block">
-                                        <button type="button" class="button -md -outline-deep-green-1 text-dark-1 mt-15 toggle-cart">Add To Cart</button>
+                                    <div class="productCard__button d-inline-block add_to_cart_btn" style="width: 100% !important">
+                                        <button type="button" class="button fs-16 w-100 -outline-deep-green-1 text-dark-1 mt-15 toggle-cart" style="width:100%; font-size: 16px; line-height: 18px; font-weight: 500; height: 60px;">Add To Cart</button>
                                     </div>
                                 </div>
                             </div>
