@@ -160,8 +160,8 @@ $(document).ready(function() {
                         </div>
                     </div>
                 </div>
-                <div class="col-auto">
-                    <button class="remove-from-cart">
+                <div class="col-auto -deep-green-1">
+                    <button class="remove-from-cart -deep-green-1">
                         <img src="admin/assets/img/menus/close.svg" alt="remove icon">
                     </button>
                 </div>
@@ -185,63 +185,6 @@ $(document).ready(function() {
         const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price), 0);
         $('#total-price').text(`$${totalPrice.toFixed(2)}`);
     }
-
-
-
-
-
-    // Attach click event to all toggle-cart buttons
-    // $('.toggle-cart').on('click', function() {
-    //     const productCard = $(this).closest('.productCard');
-    //     const productId = productCard.data('product-id');
-    //     const price = productCard.data('price');
-
-    //     const productData = {
-    //         cart_id: cartId,
-    //         price: price,
-    //         product_id: productId
-    //     };
-
-    //     if (isProductInCart(productId)) {
-    //         // Remove from cart
-    //         cart = cart.filter(item => !(item.cart_id === cartId && item.product_id === productId));
-    //         localStorage.setItem('BWB_cart', JSON.stringify(cart));
-
-    //         // Send removal request to server
-    //         $.ajax({
-    //             url: 'api/remove_from_cart.php',
-    //             type: 'POST',
-    //             contentType: 'application/json',
-    //             data: JSON.stringify({ cart_id: cartId, product_id: productId }),
-    //             success: function(response) {
-    //                 console.log('Removed from cart:', response);
-    //                 $(this).text('Add To Cart');
-    //             }.bind(this),
-    //             error: function(xhr, status, error) {
-    //                 console.error('Error removing from cart:', error);
-    //             }
-    //         });
-    //     } else {
-    //         // Add to cart
-    //         cart.push(productData);
-    //         localStorage.setItem('BWB_cart', JSON.stringify(cart));
-
-    //         // Send addition request to server
-    //         $.ajax({
-    //             url: 'api/add_to_cart.php',
-    //             type: 'POST',
-    //             contentType: 'application/json',
-    //             data: JSON.stringify(productData),
-    //             success: function(response) {
-    //                 console.log('Added to cart:', response);
-    //                 $(this).text('Added to Cart');
-    //             }.bind(this),
-    //             error: function(xhr, status, error) {
-    //                 console.error('Error adding to cart:', error);
-    //             }
-    //         });
-    //     }
-    // });
 
 
     // Handle toggle cart button click
@@ -304,9 +247,6 @@ $(document).ready(function() {
             });
         }
     });
-
-
-
 
     // Update button text based on the cart state on page load
     function updateButtonStates() {

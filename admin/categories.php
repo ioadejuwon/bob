@@ -34,13 +34,7 @@
 
 ?>
 
-
-
-
-
-
-      <div class="content-wrapper js-content-wrapper">
-        <div class="dashboard -home-9 js-dashboard-home-9">
+  
             
           <?php include_once "adm-sidebar.php" ?>
 

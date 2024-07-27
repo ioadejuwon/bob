@@ -319,10 +319,11 @@
                               </div>
                               <div class="row x-gap-20 y-gap-10 pt-30">
                                   <div class="col-sm-6">
-                                      <button class="button py-20 -dark-1 text-white -dark-button-white col-12">View Cart</button>
+                                      <!-- <button >View Cart</button> -->
+                                      <a href="<?php echo CART ?>" class="button py-20 -dark-1 text-white -dark-button-white col-12">View Cart</a>
                                   </div>
                                   <div class="col-sm-6">
-                                      <button class="button py-20 -purple-1 text-white col-12">Checkout</button>
+                                      <button class="button py-20 -deep-green-1 text-white col-12">Checkout</button>
                                   </div>
                               </div>
                           </div>

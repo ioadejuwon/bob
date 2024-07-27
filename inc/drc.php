@@ -15,6 +15,8 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     define('SIGNUP', BASE_URL.'signup.php');
     define('SHOP', BASE_URL.'shop.php');
     define('PRODUCT_DETAIILS', BASE_URL.'product.php');
+    define('CART', BASE_URL.'cart.php');
+    define('CHECKOUT', BASE_URL.'checkout.php');
 
     define('ADMIN_LOGIN', ADMIN_URL.'login.php');
     define('DASHBOARD', ADMIN_URL.'dashboard.php');

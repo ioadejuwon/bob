@@ -1,11 +1,10 @@
 <?php 
-include_once "inc/config.php";
-include_once "inc/drc.php";
+  include_once "inc/config.php";
+  include_once "inc/drc.php";
 
-$pagetitle = "Shop - ";
-include_once "head.php";
-include_once "header.php"
-
+  $pagetitle = "Shop - ";
+  include_once "head.php";
+  include_once "header.php"
 ?>
 
       <section data-anim="fade" class="breadcrumbs d-none">
