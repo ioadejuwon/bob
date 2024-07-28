@@ -62,52 +62,112 @@ include_once "header.php"
 
       <section class="layout-pt-md layout-pb-lg">
         <div class="container">
-          <div class="row justify-end">
-            <div class="col-12">
-              <div class="px-30 pr-60 py-25 rounded-8 bg-light-6 md:d-none">
-                <div class="row justify-between">
-                  <div class="col-md-4">
+          <div class="table-responsive">
+              <table class="table w-1/1 d-non align-middle">
+                <thead>
+                  <tr>
+                    <th class="">Image</th>
+                    <th class="">Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                
+                <tbody class="cart-items-container">
+
+                    <tr>
+                      <td class="">
+                        <div class="size-100 bg-image rounded-8 js-lazy mr-10" data-bg="products/66a3e51f4ec445.73910591.jpg"></div>
+                      </td>
+
+                      <td>
+                        <div class="fw-500 text-dark-1">Cosy Chair - Beige, Leather</div>
+                      </td>
+
+                      <td>
+                        <p>$1.298</p>
+                      </td>
+
+                      <td>
+                        <div class="input-counter  js-input-counter">
+                          <input class='input-counter__counter' type="number" placeholder="value..." value='1' />
+                          
+
+                          <div class="input-counter__controls">
+                            <button class='input-counter__up js-down'>
+                              <i class='icon' data-feather="minus"></i>
+                            </button>
+
+                            <button class='input-counter__down js-up'>
+                              <i class='icon' data-feather="plus"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                        <p>$1.298</p>
+                      </td>
+
+
+                      <td>
+                        <i class="icon" data-feather="x"></i>
+                      </td>
+                    </tr>
+                    
+                </tbody>
+              </table>
+
+          </div>
+
+
+
+          <div class="row justify-end d-none">
+            <div class="col-12 table-responsive">
+              <div class="px-30 pr-60 py-25 rounded-8 bg-light-6 md:d-noe">
+                <div class="row justify-beteen">
+                  <div class="col-md-3 col-3">
                     <div class="fw-500 text-deep-green-1">Product</div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-2 col-2">
                     <div class="fw-500 text-deep-green-1">Price</div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3 col-3">
                     <div class="fw-500 text-deep-green-1">Quantity</div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-2 col-2">
                     <div class="fw-500 text-deep-green-1">Subtotal</div>
                   </div>
-                  <div class="col-md-1">
-                    <div class="d-flex justify-end">
+                  <div class="col-md-1 col-1">
+                    <div class="d-flex justify-en">
                       <div class="fw-500 text-deep-green-1">Remove</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="px-30 pr-60 md:px-0 cart-items-container">
+              <div class="px-30 pr-60 md:px-0 cart-items-containe">
 
-                <div class="row y-gap-20 justify-between items-center pt-30 pb-30 border-bottom-light">
-                  <div class="col-md-4">
+                <div class="row y-gap-20 justify-betwee items-center pt-30 pb-30 border-bottom-light d-noe">
+                  <div class="col-md-3 col-3">
                     <div class="d-flex items-center">
                       <div class="">
-                        <div class="size-100 bg-image rounded-8 js-lazy" data-bg="img/shop/products/1.png"></div>
+                        <div class="size-100 bg-image rounded-8 js-lazy md:d-none mr-10" data-bg="products/66a3e51f4ec445.73910591.jpg"></div>
                       </div>
-                      <div class="fw-500 text-dark-1 ml-30">Cosy Chair - Beige, Leather</div>
+                      <div class="fw-500 text-dark-1">Cosy Chair - Beige, Leather</div>
                     </div>
                   </div>
 
-                  <div class="col-md-2 md:mt-15">
+                  <div class="col-md-2 col-2">
                     <div class="">
-                      <div class="shopCart-products__title d-none md:d-block mb-10">
-                        Price
-                      </div>
+                      
                       <p>$298</p>
                     </div>
                   </div>
 
-                  <div class="col-md-2">
+                  <div class="col-md-3 col-3">
                     <div class="">
                       <div class="shopCart-products__title d-none md:d-block mb-10">
                         Quantity
@@ -129,7 +189,7 @@ include_once "header.php"
                     </div>
                   </div>
 
-                  <div class="col-md-1">
+                  <div class="col-md-2 col-2">
                     <div class="">
                       <div class="shopCart-products__title d-none md:d-block mb-10">
                         Subtotal
@@ -139,7 +199,7 @@ include_once "header.php"
                     </div>
                   </div>
 
-                  <div class="col-md-1">
+                  <div class="col-md-1 col-1">
                     <div class="md:d-none d-flex justify-end">
                       <i class="icon" data-feather="x"></i>
                     </div>
@@ -185,7 +245,7 @@ include_once "header.php"
 
                 <div class="d-flex justify-between px-30 item border-top-dark">
                   <div class="pt-15 fw-500 text-dark-1">Total</div>
-                  <div class="pt-15 fw-500 text-dark-1">$3.298</div>
+                  <div class="pt-15 fw-500 text-dark-1" id="total-price2">$3.298</div>
                 </div>
               </div>
 

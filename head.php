@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://buildwithbob.shop"/>
     <meta name="og:description" content="Learn the best way possible." />
 
-    <meta name="twitter:site" content="@jointerabyte"/>
+    <meta name="twitter:site" content="@"/>
     <meta name="twitter:card" content="summary"/>
 
     <meta name="application-name" content="Build with Bob"/>
@@ -32,10 +32,10 @@
     <meta name="viewport" content="height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="admin/assets/img/general/icon_ab.png">
-    <link rel="icon" type="image/png" href="admin/assets/img/general/icon_ab.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="admin/assets/img/fav.png">
+    <link rel="icon" type="image/png" href="admin/assets/img/fav.png">
     <!-- <link rel="manifest" href="favicon/site.html"> -->
-    <link rel="mask-icon" href="admin/assets/img/general/icon_ab.png" color="#0010f7">
+    <link rel="mask-icon" href="admin/assets/img/fav.png" color="#0010f7">
 
     <!-- Google fonts -->
     <link rel="preconnect" href="admin/assets/fonts.googleapis.com/index.html">
@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="admin/assets/css/vendors.css">
     <link rel="stylesheet" href="admin/assets/css/main.css">
     <link rel="stylesheet" href="admin/assets/css/style.css">
+    <link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 
     <!-- Page loading scripts-->
     <script src="admin/assets/js/page-loader.js"></script>

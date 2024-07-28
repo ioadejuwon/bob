@@ -22,10 +22,9 @@
 
                 <div class="header__logo ml-30 md:ml-20">
                     <a data-barba href="<?php echo BASE_URL ?>">
-                    <!-- <img class="-light-d-none" src="assets/img/general/logo_wh.svg" alt="logo"> -->
-                    <!-- <img class="-dark-d-none no-big-screen" src="assets/img/general/icon_ab.png" alt="logo" width="50px"> -->
-                    <!-- <img class="-dark-d-none lg:d-none" src="assets/img/general/logo2_ab.svg" alt="logo"> -->
-                    <!-- <img class="-dark-d-none  sm:d-block" src="assets/img/general/logo_ab.png" alt="logo" style="width:25%"> -->
+                        <img class="no-big-screen" src="assets/img/icon.png" alt="logo1" width="50px">
+                        <img class="lg:d-none" src="assets/img/logo.png" alt="logo2">
+
                     </a>
                 </div>
                 </div>

@@ -22,7 +22,7 @@ include_once "adm-head.php";
             
             <div class="px-25 py-25 md:px-50 md:py-50 bg-white shadow-1 rounded-16">
               <!-- Terabyte Logo Icon (Only show on small screens) -->
-              <img src="assets/img/general/icon_ab.png" alt="Terabyte Logo" class="no-big-scree mb-30" width="15%">
+              <img src="assets/img/logo.png" alt="Bob Logo" class="no-big-scree mb-30" width="25%">
 
               <h3 class="text-30 lh-13">Sign Up</h3>
               <p class="mt-10 mb-10">Create a free account and learn the best way possible.</p>

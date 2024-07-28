@@ -38,10 +38,10 @@
     <meta name="viewport" content="height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/general/icon_ab.png">
-    <link rel="icon" type="image/png" href="assets/img/general/icon_ab.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/fav.png">
+    <link rel="icon" type="image/png" href="assets/img/fav.png">
     <!-- <link rel="manifest" href="favicon/site.html"> -->
-    <link rel="mask-icon" href="assets/img/general/icon_ab.png" color="#0010f7">
+    <link rel="mask-icon" href="assets/img/fav.png" color="#0010f7">
 
     <!-- Google fonts -->
     <link rel="preconnect" href="assets/fonts.googleapis.com/index.html">

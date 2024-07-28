@@ -9,8 +9,9 @@
             <div class="header-left d-flex items-center">
 
               <div class="header__logo ">
-                <a data-barba href="index.html">
-                  <img src="admin/assets/img/general/logo-dark.svg" alt="logo">
+                <a data-barba href="<?php echo BASE_URL ?>">
+                  <!-- <img src="admin/assets/img/general/logo-dark.svg" alt="logo"> -->
+                  <img src="admin/assets/img/logo.png" alt="logo">
                 </a>
               </div>
 

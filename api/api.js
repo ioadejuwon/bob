@@ -125,6 +125,12 @@ $(document).ready(function() {
 
     // Cart  JS Begin
 
+
+    function formatPrice(amount) {
+        return `₦${parseFloat(amount).toFixed(2)}`;
+    }
+
+    
     // Get or generate cart ID
     let cartId = localStorage.getItem('BWB_cart_id');
     if (!cartId) {
@@ -135,13 +141,56 @@ $(document).ready(function() {
     // Load cart from local storage
     let cart = JSON.parse(localStorage.getItem('BWB_cart')) || [];
 
+
+    // Function to update cart in local storage
+    function updateCartInLocalStorage() {
+        localStorage.setItem('BWB_cart', JSON.stringify(cart));
+        updateCartheaderDisplay(); // Refresh cart display
+        updateCartPageDisplay(); // Refresh cart display
+    }
+
+     // Function to handle quantity change
+     function handleQuantityChange(productId, newQty) {
+        // Find the item in the cart
+        const itemIndex = cart.findIndex(item => item.product_id === productId && item.cart_id === cartId);
+        if (itemIndex !== -1) {
+            // Update quantity
+            cart[itemIndex].product_qty = newQty;
+            updateCartInLocalStorage();
+        }
+    }
+
+    // Handle quantity change
+    $('.cart-items-container').on('click', '.input-counter__up', function() {
+        const itemRow = $(this).closest('.row');
+        const productId = itemRow.data('product-id');
+        const inputField = itemRow.find('.input-counter__counter');
+        let currentQty = parseInt(inputField.val(), 10);
+        inputField.val(++currentQty);
+        handleQuantityChange(productId, currentQty);
+    });
+
+    $('.cart-items-container').on('click', '.input-counter__down', function() {
+        const itemRow = $(this).closest('.row');
+        const productId = itemRow.data('product-id');
+        const inputField = itemRow.find('.input-counter__counter');
+        let currentQty = parseInt(inputField.val(), 10);
+        if (currentQty > 1) { // Prevent quantity from going below 1
+            inputField.val(--currentQty);
+            handleQuantityChange(productId, currentQty);
+        }
+    });
+
+
+
+
     // Function to check if product is in cart
     function isProductInCart(productId) {
         return cart.some(item => item.product_id === productId && item.cart_id === cartId);
     }
 
 
-    // Function to generate HTML for each cart item
+    // Function to generate HTML for each cart item for Cart Dropdown
     function generateCartItemHTML(item) {
         return `
             <div class="row justify-between x-gap-40 pb-20" data-product-id="${item.product_id}">
@@ -161,7 +210,7 @@ $(document).ready(function() {
                     </div>
                 </div>
                 <div class="col-auto -deep-green-1">
-                    <button class="remove-from-cart -deep-green-1">
+                    <button class="remove-from-cart -deep-green-1" data-product-id="${item.product_id}">
                         <img src="admin/assets/img/menus/close.svg" alt="remove icon">
                     </button>
                 </div>
@@ -169,21 +218,144 @@ $(document).ready(function() {
         `;
     }
 
-    // Function to update the cart display
-    function updateCartDisplay() {
-        const cartContainer = $('.header-cart .px-30.pt-30.pb-10');
 
+
+      // Function to generate HTML for each cart item for Cart Page
+      function generateCartItemPageHTML(item) {
+        return `
+            <tr class="data-product-id="${item.product_id}"">
+                <td class="">
+                    <div class="size-100 bg-image rounded-8 js-lazy mr-10" data-bg="${item.image_path}"></div>
+                </td>
+
+                <td>
+                    <div class="fw-500 text-dark-1">${item.product_name}</div>
+                </td>
+
+                <td>
+                    <p class="product-price">${item.price}</p>
+                </td>
+
+                <td>
+                    <div class="input-counter  js-input-counter">
+                        <input class='input-counter__counter' type="number" placeholder="value..." value='${item.product_qty}' />
+
+                        <div class="input-counter__controls">
+                            <button class='input-counter__up js-down'>
+                                <i class='icon' data-feather="minus"></i>
+                            </button>
+
+                            <button class='input-counter__down js-up'>
+                                <i class='icon' data-feather="plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <p class="product-subtotal">${(item.price * item.product_qty).toFixed(2)}</p>
+                </td>
+
+
+                <td>
+                    <button class="remove-from-cart-page" data-product-id="${item.product_id}">
+                        <i class="icon" data-feather="x"></i>
+                    </button>
+                </td>
+            </tr>
+
+            
+        `;
+    }
+
+
+    
+
+    // Populate cart items
+    cart.forEach(item => {
+        // Assuming `item` has properties like `image`, `name`, `price`, `quantity`, and `product_id`
+        const cartItemHTML = generateCartItemPageHTML(item);
+        $('.cart-items-container').append(cartItemHTML);
+    });
+
+    // Handle removal of cart items
+    $('.cart-items-container').on('click', '.remove-item', function() {
+        const productId = $(this).data('product-id');
+
+        // Remove from local storage
+        cart = cart.filter(item => item.product_id !== productId);
+        localStorage.setItem('BWB_cart', JSON.stringify(cart));
+
+        // Send removal request to server
+        $.ajax({
+            url: 'api/remove_from_cart.php', // Replace with your server endpoint for removing
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ cart_id: cartId, product_id: productCard }),
+            success: function(response) {
+                console.log('Removed from cart:', response);
+                updateCartheaderDisplay(); // Refresh cart display
+                updateCartPageDisplay(); // Refresh cart display
+                updateButtonStates(); // Update button states after removal
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+
+        // Remove from the DOM
+        $(this).closest('.row').remove();
+
+        // Optionally, update total or other parts of the cart UI
+        updateButtonStates();
+    });
+
+    
+    // Function to update the cart display
+
+    function updateCartheaderDisplay() {
+        const cartContainer = $('.header-cart .px-30.pt-30.pb-10');
+    
         // Clear existing items
         cartContainer.empty();
-
+    
         // Generate and append HTML for each item in the cart
         cart.forEach(item => {
             cartContainer.append(generateCartItemHTML(item));
         });
+    
+        // Update total price
+        const totalPrice = cart.reduce((total, item) => total + (item.price * item.product_qty), 0);
+        $('#total-price').text(formatPrice(totalPrice));
+        $('#total-price2').text(formatPrice(totalPrice));
+    }
+        
+
+
+    // Function to update the cart display
+    function updateCartPageDisplay() {
+        const cartContainer = $('.cart-items-container');
+        // const cartContainer = $('.header-cart .px-30.pt-30.pb-10');
+
+        // Clear existing items
+        cartContainer.empty();
+
+        let totalPrice = 0;
+
+        // Generate and append HTML for each item in the cart
+        cart.forEach(item => {
+            const itemSubtotal = item.price * item.product_qty;
+            totalPrice += itemSubtotal;
+            cartContainer.append(generateCartItemPageHTML(item));
+
+            // Update subtotal for each item
+            const itemRow = cartContainer.find(`[data-product-id="${item.product_id}"]`);
+            itemRow.find('.product-subtotal').text(`${formatPrice(itemSubtotal.toFixed(2))}`);
+        });
 
         // Update total price
-        const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price), 0);
-        $('#total-price').text(`$${totalPrice.toFixed(2)}`);
+        $('#total-price').text(formatPrice(totalPrice));
+        $('#total-price2').text(formatPrice(totalPrice));
     }
 
 
@@ -194,6 +366,7 @@ $(document).ready(function() {
         const price = productCard.data('price');
         const imagePath = productCard.data('image');
         const productName = productCard.data('name');
+        const productQty = 1;
         const discountedPrice = productCard.data('discounted-price');
 
         const productData = {
@@ -202,6 +375,7 @@ $(document).ready(function() {
             product_id: productId,
             image_path: imagePath,
             product_name: productName,
+            product_qty: productQty,
             discounted_price: discountedPrice
         };
 
@@ -219,7 +393,9 @@ $(document).ready(function() {
                 success: function(response) {
                     console.log('Removed from cart:', response);
                     $(this).text('Add To Cart');
-                    updateCartDisplay(); // Refresh cart display
+                    updateCartPageDisplay();
+                    updateCartheaderDisplay();
+                    updateButtonStates();
                 }.bind(this),
                 error: function(xhr, status, error) {
                     console.error('Error:', error);
@@ -239,7 +415,9 @@ $(document).ready(function() {
                 success: function(response) {
                     console.log('Added to cart:', response);
                     $(this).text('Added to Cart');
-                    updateCartDisplay(); // Refresh cart display
+                    updateCartPageDisplay();
+                    updateCartheaderDisplay();
+                    updateButtonStates();
                 }.bind(this),
                 error: function(xhr, status, error) {
                     console.error('Error:', error);
@@ -259,27 +437,33 @@ $(document).ready(function() {
             } else {
                 button.text('Add To Cart');
             }
+            
         });
     }
 
 
     // Function to handle removal of items from the cart
-    $(document).on('click', '.remove-from-cart', function() {
-        const productCard = $(this).closest('.row').data('product-id');
-        
-        // Find item to remove
-        cart = cart.filter(item => !(item.cart_id === cartId && item.product_id === productCard));
-        localStorage.setItem('BWB_cart', JSON.stringify(cart));
+ 
 
+    $(document).on('click', '.remove-from-cart-page', function() {
+        const productId = $(this).data('product-id'); // Use `data-product-id` directly
+    
+        console.log('Remove button clicked for product ID:', productId); // Debug log
+    
+        // Find item to remove
+        cart = cart.filter(item => !(item.cart_id === cartId && item.product_id === productId));
+        localStorage.setItem('BWB_cart', JSON.stringify(cart));
+    
         // Send removal request to server
         $.ajax({
-            url: 'api/remove_from_cart.php', // Replace with your server endpoint for removing
+            url: 'api/remove_from_cart.php',
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ cart_id: cartId, product_id: productCard }),
+            data: JSON.stringify({ cart_id: cartId, product_id: productId }),
             success: function(response) {
                 console.log('Removed from cart:', response);
-                updateCartDisplay(); // Refresh cart display
+                updateCartPageDisplay();
+                updateCartheaderDisplay();
                 updateButtonStates(); // Update button states after removal
             },
             error: function(xhr, status, error) {
@@ -289,8 +473,40 @@ $(document).ready(function() {
     });
 
 
+    $(document).on('click', '.remove-from-cart', function() {
+        const productId = $(this).data('product-id'); // Use `data-product-id` directly
+    
+        console.log('Remove button clicked for product ID:', productId); // Debug log
+    
+        // Find item to remove
+        cart = cart.filter(item => !(item.cart_id === cartId && item.product_id === productId));
+        localStorage.setItem('BWB_cart', JSON.stringify(cart));
+    
+        // Send removal request to server
+        $.ajax({
+            url: 'api/remove_from_cart.php',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ cart_id: cartId, product_id: productId }),
+            success: function(response) {
+                console.log('Removed from cart:', response);
+                updateCartPageDisplay();
+                updateCartheaderDisplay();
+                updateButtonStates(); // Update button states after removal
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+    
+    
+
+
     // Populate cart display on page load
-    updateCartDisplay();
+    updateCartPageDisplay();
+    updateCartheaderDisplay();
+    updateButtonStates();
 
     //Cart  JS End
 

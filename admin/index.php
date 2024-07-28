@@ -206,7 +206,7 @@
                 <div class="y-gap-40">
 
                   <div class="d-flex border-top-light">
-                    <img class="size-40" src="../assets/img/dashboard/avatars/2.png" alt="avatar">
+                    <img class="size-40" src="assets/img/dashboard/avatars/2.png" alt="avatar">
                     <div class="ml-10 w-1/1">
                       <h4 class="text-15 lh-1 fw-500">Albert Flores</h4>
                       <div class="d-flex items-center x-gap-20 y-gap-10 flex-wrap pt-10">
@@ -241,7 +241,7 @@
 
                   <div class="d-flex items-center border-top-light">
                     <div class="shrink-0">
-                      <img src="../assets/img/dashboard/actions/2.png" alt="image">
+                      <img src="assets/img/dashboard/actions/2.png" alt="image">
                     </div>
                     <div class="ml-12">
                       <h4 class="text-15 lh-1 fw-500">You changed password</h4>

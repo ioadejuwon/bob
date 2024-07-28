@@ -5,124 +5,6 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
-  --bs-blue: #0d6efd;
-  --bs-indigo: #6610f2;
-  --bs-purple: #6f42c1;
-  --bs-pink: #d63384;
-  --bs-red: #dc3545;
-  --bs-orange: #fd7e14;
-  --bs-yellow: #ffc107;
-  --bs-green: #198754;
-  --bs-teal: #20c997;
-  --bs-cyan: #0dcaf0;
-  --bs-white: #fff;
-  --bs-gray: #6c757d;
-  --bs-gray-dark: #343a40;
-  --bs-gray-100: #f8f9fa;
-  --bs-gray-200: #e9ecef;
-  --bs-gray-300: #dee2e6;
-  --bs-gray-400: #ced4da;
-  --bs-gray-500: #adb5bd;
-  --bs-gray-600: #6c757d;
-  --bs-gray-700: #495057;
-  --bs-gray-800: #343a40;
-  --bs-gray-900: #212529;
-  --bs-primary: rgb(1, 59, 67);
-  --bs-primary-1: rgb(1, 59, 67);
-  --bs-primary-2: #0063f7;
-  --bs-primary-3: #55b1f3;
-  --bs-primary-4: #50d0d0;
-  --bs-secondary: #c903ff;
-  --bs-secondary-1: #c903ff;
-  --bs-secondary-2: #e26bf5;
-  --bs-secondary-3: #f7c2ff;
-  --bs-secondary-4: #fdeffc;
-  --bs-warning: #ffc212;
-  --bs-warning-1: #ffc212;
-  --bs-warning-2: #ffd252;
-  --bs-warning-3: #ffe393;
-  --bs-warning-4: #fff9e9;
-  --bs-success: #00f7bf;
-  --bs-success-1: #00f7bf;
-  --bs-success-2: #5bffce;
-  --bs-success-3: #98ffe0;
-  --bs-success-4: #22785b;
-  --bs-danger: #ff0022;
-  --bs-danger-1: #ff0022;
-  --bs-danger-2: #ff455e;
-  --bs-danger-3: #ff8b9a;
-  --bs-danger-4: #ffe7ea;
-  --bs-info: #1be7ff;
-  --bs-info-1: #1be7ff;
-  --bs-info-2: #59edff;
-  --bs-info-3: #97f4ff;
-  --bs-info-4: #eafcff;
-  --bs-black-0: #ffffff;
-  --bs-black-10: #f7fafc;
-  --bs-black-20: #f0f3f5;
-  --bs-black-40: #dfe6e9;
-  --bs-black-60: #b2bec3;
-  --bs-black-80: #636e72;
-  --bs-black-bg: #111314;
-  --bs-black-100: #2d3436;
-  --bs-light: #f7fafc;
-  --bs-dark: #111314;
-  --bs-primary-rgb: 1, 59, 67;
-  --bs-primary-1-rgb: 0, 16, 247;
-  --bs-primary-2-rgb: 0, 99, 247;
-  --bs-primary-3-rgb: 85, 177, 243;
-  --bs-primary-4-rgb: 235, 250, 250;
-  --bs-secondary-rgb: 201, 3, 255;
-  --bs-secondary-1-rgb: 201, 3, 255;
-  --bs-secondary-2-rgb: 226, 107, 245;
-  --bs-secondary-3-rgb: 247, 194, 255;
-  --bs-secondary-4-rgb: 253, 239, 252;
-  --bs-warning-rgb: 255, 194, 18;
-  --bs-warning-1-rgb: 255, 194, 18;
-  --bs-warning-2-rgb: 255, 210, 82;
-  --bs-warning-3-rgb: 255, 227, 147;
-  --bs-warning-4-rgb: 255, 249, 233;
-  --bs-success-rgb: 0, 247, 191;
-  --bs-success-1-rgb: 0, 247, 191;
-  --bs-success-2-rgb: 91, 255, 206;
-  --bs-success-3-rgb: 152, 255, 224;
-  --bs-success-4-rgb: 234, 255, 248;
-  --bs-danger-rgb: 255, 0, 34;
-  --bs-danger-1-rgb: 255, 0, 34;
-  --bs-danger-2-rgb: 255, 69, 94;
-  --bs-danger-3-rgb: 255, 139, 154;
-  --bs-danger-4-rgb: 255, 231, 234;
-  --bs-info-rgb: 27, 231, 255;
-  --bs-info-1-rgb: 27, 231, 255;
-  --bs-info-2-rgb: 89, 237, 255;
-  --bs-info-3-rgb: 151, 244, 255;
-  --bs-info-4-rgb: 234, 252, 255;
-  --bs-black-0-rgb: 255, 255, 255;
-  
-  --bs-black-10-rgb: 247, 250, 252;
-  --bs-black-20-rgb: 240, 243, 245;
-  --bs-black-40-rgb: 223, 230, 233;
-  --bs-black-60-rgb: 178, 190, 195;
-  --bs-black-80-rgb: 99, 110, 114;
-  --bs-black-bg-rgb: 17, 19, 20;
-  --bs-black-100-rgb: 45, 52, 54;
-  --bs-light-rgb: 247, 250, 252;
-  --bs-dark-rgb: 17, 19, 20;
-  --bs-white-rgb: 255, 255, 255;
-  --bs-black-rgb: 0, 0, 0;
-  --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  /* --bs-body-font-family: var(--bs-font-sans-serif); */
-  --bs-body-font-size: 1rem;
-  --bs-body-font-weight: 400;
-  --bs-body-line-height: 1.5;
-  --bs-body-color: #212529;
-  --bs-body-bg: #fff;
-}
 
 *,
 *::before,
@@ -165,8 +47,8 @@ hr:not([size]) {
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 14px;
-  font-weight: 500;
-  line-height: 1.2;
+  /* font-weight: 500; */
+  /* line-height: 1.2; */
 }
 
 h1, .h1 {
@@ -403,7 +285,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  /* font-family: inherit; */
   font-size: inherit;
   line-height: inherit;
 }
@@ -10239,7 +10121,7 @@ textarea.form-control-lg {
   z-index: 1080;
   display: block;
   margin: 0;
-  font-family: var(--bs-font-sans-serif);
+  /* font-family: var(--bs-font-sans-serif); */
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -10341,7 +10223,7 @@ textarea.form-control-lg {
   z-index: 1070;
   display: block;
   max-width: 276px;
-  font-family: var(--bs-font-sans-serif);
+  /* font-family: var(--bs-font-sans-serif); */
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -13760,7 +13642,7 @@ textarea.form-control-lg {
 }
 
 .font-monospace {
-  font-family: var(--bs-font-monospace) ;
+  /* font-family: var(--bs-font-monospace) ; */
 }
 
 .fs-1 {

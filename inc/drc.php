@@ -9,53 +9,36 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     // Local environment
     define('BASE_URL', 'http://localhost:8888/bob/');
     define('ADMIN_URL', 'http://localhost:8888/bob/admin/');
-    
-    
-    
-    define('SIGNUP', BASE_URL.'signup.php');
-    define('SHOP', BASE_URL.'shop.php');
-    define('PRODUCT_DETAIILS', BASE_URL.'product.php');
-    define('CART', BASE_URL.'cart.php');
-    define('CHECKOUT', BASE_URL.'checkout.php');
 
-    define('ADMIN_LOGIN', ADMIN_URL.'login.php');
-    define('DASHBOARD', ADMIN_URL.'dashboard.php');
-    define('ADD_PRODUCT', ADMIN_URL.'create.php');
-    define('CATEGORIES', ADMIN_URL.'categories.php');
-    define('PRODUCTS', ADMIN_URL.'products.php');
-    define('PROFILE', ADMIN_URL.'profile.php');
-    define('ADD_IMAGE', ADMIN_URL.'add_image.php');
-    define('EDIT_PRODUCT', ADMIN_URL.'editproduct.php');
-    define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail.php');
-    define('EDIT_IMAGES', ADMIN_URL.'editimages.php');
-    
-
-    define('LOGOUT', BASE_URL.'logout.php?id='.$user_id); // Logout Link
 
 } else {
     // Hosting environment
     define('BASE_URL', 'https://bobthebuilder.shop/');
     define('ADMIN_URL', 'https://admin.buildwithbob.shop/');
     // pages
-
-    define('SIGNUP', BASE_URL.'signup');
-    define('SHOP', BASE_URL.'shop');
-    define('PRODUCT_DETAIILS', BASE_URL.'product');
-    
-
-    define('ADMIN_LOGIN', ADMIN_URL.'login');
-    define('DASHBOARD', ADMIN_URL.'dashboard');
-    define('ADD_PRODUCT', ADMIN_URL.'create');
-    define('CATEGORIES', ADMIN_URL.'categories');
-    define('PRODUCTS', ADMIN_URL.'products');
-    define('PROFILE', ADMIN_URL.'profile');
-    define('ADD_IMAGE', ADMIN_URL.'add_image');
-    define('EDIT_PRODUCT', ADMIN_URL.'editproduct');
-    define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail');
-    define('EDIT_IMAGES', ADMIN_URL.'editimages');
-
-    define('LOGOUT', BASE_URL.'logout.php?id='.$user_id); // Logout Link
 }
+
+    
+    
+define('SHOP', BASE_URL.'shop');
+define('PRODUCT_DETAIILS', BASE_URL.'product');
+define('SIGNUP', ADMIN_URL.'signup');
+define('CART', BASE_URL.'cart');
+define('CHECKOUT', BASE_URL.'checkout');
+
+define('ADMIN_LOGIN', ADMIN_URL.'login');
+define('DASHBOARD', ADMIN_URL);
+define('ADD_PRODUCT', ADMIN_URL.'create');
+define('CATEGORIES', ADMIN_URL.'categories');
+define('PRODUCTS', ADMIN_URL.'products');
+define('PROFILE', ADMIN_URL.'profile');
+define('ADD_IMAGE', ADMIN_URL.'add_image');
+define('EDIT_PRODUCT', ADMIN_URL.'editproduct');
+define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail');
+define('EDIT_IMAGES', ADMIN_URL.'editimages');
+
+
+define('LOGOUT', BASE_URL.'logout?id='.$user_id); // Logout Link
 
 
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://'; // Get the protocol (http or https)

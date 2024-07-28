@@ -15,17 +15,17 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div data-anim-child="fade" class="mainSlider__bg">
-              <div class="bg-image js-lazy" data-bg="assets/img/landing.jpg"></div>
+              <div class="bg-image js-lazy" data-bg="admin/assets/img/landing.jpg"></div>
             </div>
           </div>
           <div class="swiper-slide">
             <div data-anim-child="fade" class="mainSlider__bg">
-              <div class="bg-image js-lazy" data-bg="assets/img/landing.jpg"></div>
+              <div class="bg-image js-lazy" data-bg="admin/assets/img/landing.jpg"></div>
             </div>
           </div>
           <div class="swiper-slide">
             <div data-anim-child="fade" class="mainSlider__bg">
-              <div class="bg-image js-lazy" data-bg="assets/img/landing.jpg"></div>
+              <div class="bg-image js-lazy" data-bg="admin/assets/img/landing.jpg"></div>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
       <div class="d-none" style="padding-top: 2%;;">
         <section data-anim-wrap class="masthead -type-2">
           <div class="masthead__bg">
-            <div class="bg-image js-lazy" data-bg="assets/img/landing.png"></div>
+            <div class="bg-image js-lazy" data-bg="admin/assets/img/landing.png"></div>
           </div>
 
           <div class="container">
@@ -103,17 +103,17 @@
                     <div class="productCard__image">
 
                         <div class="ratio ratio-63:57">
-                          <img class="absolute-full-center rounded-8" src="assets/img/shop/single/1.png" alt="project image">
+                          <img class="absolute-full-center rounded-8" src="admin/assets/img/shop/single/1.png" alt="project image">
                         </div>
                         <div class="productCard__controls z-3">
                           <a href="#" class="productCard__icon">
                           <i class="fa-regular fa-send"></i>
                           </a>
                           
-                          <a data-barba href="assets/img/shop/single/3.png" class="gallery__item js-gallery productCard__icon" data-gallery="gallery1">
+                          <a data-barba href="admin/assets/img/shop/single/3.png" class="gallery__item js-gallery productCard__icon" data-gallery="gallery1">
                             <i class="fa-regular fa-eye"></i>
                           </a>
-                          <a data-barba href="assets/img/shop/single/3.png" class="gallery__item js-gallery " data-gallery="gallery2"></a>
+                          <a data-barba href="admin/assets/img/shop/single/3.png" class="gallery__item js-gallery " data-gallery="gallery2"></a>
                         </div>
 
                       
@@ -148,7 +148,7 @@
                 <div class="col-12">
                   <div class="categoryCard -type-1">
                     <div class="categoryCard__image">
-                      <div class="bg-image ratio ratio-30:35 js-lazy" data-bg="assets/img/home-2/categories/5.png"></div>
+                      <div class="bg-image ratio ratio-30:35 js-lazy" data-bg="admin/assets/img/home-2/categories/5.png"></div>
                     </div>
                     <div class="categoryCard__content text-center">
                       <h4 class="categoryCard__title text-17 lh-15 fw-500 text-white">Personal Development</h4>
@@ -164,7 +164,7 @@
                 <div class="col-12">
                   <div class="categoryCard -type-1">
                     <div class="categoryCard__image">
-                      <div class="bg-image ratio ratio-30:35 js-lazy" data-bg="assets/img/home-2/categories/5.png"></div>
+                      <div class="bg-image ratio ratio-30:35 js-lazy" data-bg="admin/assets/img/home-2/categories/5.png"></div>
                     </div>
                     <div class="categoryCard__content text-center">
                       <h4 class="categoryCard__title text-17 lh-15 fw-500 text-white">Personal Development</h4>
@@ -184,7 +184,7 @@
       <!-- Newsletter Section Begin -->
       <section class="layout-pt-l layout-pb-lg mb-90 section-bg d-none">
         <div class="section-bg__item">
-          <img class="img-full rounded-16" src="assets/img/home-3/cta/bg.png" alt="image">
+          <img class="img-full rounded-16" src="admin/assets/img/home-3/cta/bg.png" alt="image">
         </div>
 
         <div class="container">
