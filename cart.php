@@ -76,7 +76,6 @@ include_once "header.php"
                 </thead>
                 
                 <tbody class="cart-items-container">
-
                     <tr>
                       <td class="">
                         <div class="size-100 bg-image rounded-8 js-lazy mr-10" data-bg="products/66a3e51f4ec445.73910591.jpg"></div>
@@ -116,102 +115,8 @@ include_once "header.php"
                         <i class="icon" data-feather="x"></i>
                       </td>
                     </tr>
-                    
                 </tbody>
               </table>
-
-          </div>
-
-
-
-          <div class="row justify-end d-none">
-            <div class="col-12 table-responsive">
-              <div class="px-30 pr-60 py-25 rounded-8 bg-light-6 md:d-noe">
-                <div class="row justify-beteen">
-                  <div class="col-md-3 col-3">
-                    <div class="fw-500 text-deep-green-1">Product</div>
-                  </div>
-                  <div class="col-md-2 col-2">
-                    <div class="fw-500 text-deep-green-1">Price</div>
-                  </div>
-                  <div class="col-md-3 col-3">
-                    <div class="fw-500 text-deep-green-1">Quantity</div>
-                  </div>
-                  <div class="col-md-2 col-2">
-                    <div class="fw-500 text-deep-green-1">Subtotal</div>
-                  </div>
-                  <div class="col-md-1 col-1">
-                    <div class="d-flex justify-en">
-                      <div class="fw-500 text-deep-green-1">Remove</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="px-30 pr-60 md:px-0 cart-items-containe">
-
-                <div class="row y-gap-20 justify-betwee items-center pt-30 pb-30 border-bottom-light d-noe">
-                  <div class="col-md-3 col-3">
-                    <div class="d-flex items-center">
-                      <div class="">
-                        <div class="size-100 bg-image rounded-8 js-lazy md:d-none mr-10" data-bg="products/66a3e51f4ec445.73910591.jpg"></div>
-                      </div>
-                      <div class="fw-500 text-dark-1">Cosy Chair - Beige, Leather</div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-2 col-2">
-                    <div class="">
-                      
-                      <p>$298</p>
-                    </div>
-                  </div>
-
-                  <div class="col-md-3 col-3">
-                    <div class="">
-                      <div class="shopCart-products__title d-none md:d-block mb-10">
-                        Quantity
-                      </div>
-
-                      <div class="input-counter md:mt-20 js-input-counter">
-                        <input class='input-counter__counter' type="number" placeholder="value..." value='1' />
-
-                        <div class="input-counter__controls">
-                          <button class='input-counter__up js-down'>
-                            <i class='icon' data-feather="minus"></i>
-                          </button>
-
-                          <button class='input-counter__down js-up'>
-                            <i class='icon' data-feather="plus"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-2 col-2">
-                    <div class="">
-                      <div class="shopCart-products__title d-none md:d-block mb-10">
-                        Subtotal
-                      </div>
-
-                      <p>$1.298</p>
-                    </div>
-                  </div>
-
-                  <div class="col-md-1 col-1">
-                    <div class="md:d-none d-flex justify-end">
-                      <i class="icon" data-feather="x"></i>
-                    </div>
-                  </div>
-                </div>
-
-                
-
-               
-
-              </div>
-
               <div class="shopCart-footer px-16 mt-30">
                 <div class="row justify-between y-gap-30">
                   <div class="col-xl-5">
@@ -230,12 +135,13 @@ include_once "header.php"
                   </div>
                 </div>
               </div>
-            </div>
+          </div>
 
+          <div class="row justify-end">
             <div class="col-xl-4 col-lg-5 layout-pt-lg">
               <div class="py-30 bg-light-4 rounded-8 border-light">
                 <h5 class="px-30 text-20 fw-500">
-                  Cart Totals
+                  Cart Total
                 </h5>
 
                 <div class="d-flex justify-between px-30 item mt-25">
