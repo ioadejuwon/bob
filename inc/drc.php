@@ -9,36 +9,37 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     // Local environment
     define('BASE_URL', 'http://localhost:8888/bob/');
     define('ADMIN_URL', 'http://localhost:8888/bob/admin/');
-
-
 } else {
     // Hosting environment
     define('BASE_URL', 'https://bobthebuilder.shop/');
     define('ADMIN_URL', 'https://admin.buildwithbob.shop/');
-    // pages
 }
 
-    
-    
+// Pages
 define('SHOP', BASE_URL.'shop');
 define('PRODUCT_DETAIILS', BASE_URL.'product');
 define('SIGNUP', ADMIN_URL.'signup');
 define('CART', BASE_URL.'cart');
 define('CHECKOUT', BASE_URL.'checkout');
+define('ORDER', BASE_URL.'order');
+define('CONFIRM_PAY', BASE_URL.'inc/confirm');
 
 define('ADMIN_LOGIN', ADMIN_URL.'login');
 define('DASHBOARD', ADMIN_URL);
 define('ADD_PRODUCT', ADMIN_URL.'create');
 define('CATEGORIES', ADMIN_URL.'categories');
 define('PRODUCTS', ADMIN_URL.'products');
+define('COUPON', ADMIN_URL.'coupon');
 define('PROFILE', ADMIN_URL.'profile');
 define('ADD_IMAGE', ADMIN_URL.'add_image');
 define('EDIT_PRODUCT', ADMIN_URL.'editproduct');
 define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail');
 define('EDIT_IMAGES', ADMIN_URL.'editimages');
 
-
 define('LOGOUT', BASE_URL.'logout?id='.$user_id); // Logout Link
+
+define('SECRET_KEY', 'FLWSECK_TEST-092091172c366ec6441c6b73d4b35cae-X');
+// define('SECRET_KEY', 'FLWSECK-6087b9659c16c537038672cfb8d4ac4d-18adfa38c92vt-X');
 
 
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://'; // Get the protocol (http or https)

@@ -1,8 +1,9 @@
+<div id="notification-container"></div> 
     <!-- Header Section Begin -->
     <header data-anim="fade" data-add-bg="" class="header -type-3 js-header">
 
 
-      <div class="header__container py-10">
+    <div class="header__container py-10" style="width:95%; margin:0% auto;">
         <div class="row justify-between items-center">
 
           <div class="col-auto">
@@ -16,7 +17,7 @@
               </div>
 
 
-              <div class="header__explore text-purple-1 ml-30 xl:d-none">
+              <div class="header__explore text-purple-1 ml-30 d-none">
                 <a href="#" class="d-flex items-center" data-el-toggle=".js-explore-toggle">
                   <i class="icon icon-explore mr-15"></i>
                   Explore
@@ -172,7 +173,7 @@
               </div>
 
 
-              <div class="header-search-field ml-30">
+              <div class="header-search-field ml-30 d-none">
                 <form action="#">
                   <div class="header-search-field__group">
                     <input type="text" placeholder="What do you want to learn?">
@@ -203,11 +204,11 @@
                
 
                        
-                      <li>
-                          <a data-barba href="contact-1.html">Contact</a>
+                      <li class="mt-15">
+                          <a data-barba href="<?php echo SHOP ?>">Explore</a>
                         </li>
                         <li>
-                          <a data-barba href="contact-1.html">Contact</a>
+                          <!-- <a data-barba href="contact-1.html">Contact</a> -->
                         </li>
                       </ul>
                     </div>
@@ -255,10 +256,13 @@
                 </div>
 
 
-                <div class="relative ml-30 xl:ml-20">
-                  <button class="d-flex items-center text-dark-1" data-el-toggle=".js-cart-toggle">
+                <div class="relative ml-30 xl:ml-20 items-center">
+                  <a class="d-flex items-center text-dark-1" href="<?php echo CART ?>">
                     <i class="text-20 icon icon-basket"></i>
-                  </button>
+                  </a>
+                  <!-- <button class="d-flex items-center text-dark-1"  data-el-toggle=".js-cart-toggle">
+                    <i class="text-20 icon icon-basket"></i>
+                  </button> -->
 
                   <!-- <div class="toggle-element js-cart-toggle">
                     <div class="header-cart bg-white -dark-bg-dark-1 rounded-8">
@@ -308,7 +312,7 @@
                   </div> -->
 
                   <!-- Cart Toggle Element -->
-                  <div class="toggle-element js-cart-toggle">
+                  <div class="toggle-element js-cart-toggle d-none">
                       <div class="header-cart bg-white -dark-bg-dark-1 rounded-8">
 
                           <div class="px-30 pt-30 pb-10"></div> <!-- This is where cart items will be populated -->

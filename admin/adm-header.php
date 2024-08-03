@@ -1,13 +1,5 @@
-<style>
-.toggle-element {
-    display: none;
-}
 
-.toggle-element.active {
-    display: block;
-}
-
-</style>
+<div id="notification-container"></div> 
 
     <header class="header -dashboard -dark-bg-dark-1 js-header">
         <div class="header__container py-20 px-30">
@@ -232,3 +224,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 </script>
+
+

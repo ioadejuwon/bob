@@ -1,4 +1,5 @@
 <?php 
+  include_once "inc/config.php";
   include_once "inc/drc.php";
 
   $pagetitle = "Home - ";
@@ -96,6 +97,81 @@
         <div class="container">
           <div class="row x-gap-60">
             <div class="col-lg-12">
+            <div class="row y-gap-30">
+                <?php 
+                    $prodsql = mysqli_query($conn, "SELECT * FROM products");
+                    while ($row_prod = mysqli_fetch_assoc($prodsql)) {
+                        $product_name = $row_prod['producttitle']; // Assuming the column name for the product name is 'product_name'
+                        $price = $row_prod['price']; // Assuming the column name for the original price is 'original_price'
+                        $dis_price = $row_prod['discount_price']; // Assuming the column name for the discounted price is 'discounted_price'
+                        $original_price = '&#8358;' . number_format($price);
+                        $discounted_price = '&#8358;' . number_format($dis_price);
+                        $product_id = $row_prod['productid'];
+
+                        // Get the thumbnail image
+                        $prodsql_img_thumbnail = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id' AND thumbnail = 1");
+                        $row_prod_img_thumbnail = mysqli_fetch_assoc($prodsql_img_thumbnail);
+                        $image_path_thumbnail = $row_prod_img_thumbnail['image_path'];
+                        $product_img = $image_path_thumbnail;
+
+                        // Get the non-thumbnail images
+                        $prodsql_img = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id' AND thumbnail = 0");
+                        $other_images = [];
+                        while ($row_prod_img = mysqli_fetch_assoc($prodsql_img)) {
+                            $other_images[] = $row_prod_img['image_path'];
+                        }
+                    ?>
+                        
+                                
+                        <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/2">
+
+                            <form id="productForm" class="productCard -type-1 text-center" data-product-id="<?php echo $product_id; ?>" data-price="<?php echo $price; ?>" data-image="<?php echo $image_path_thumbnail; ?>" data-name="<?php echo $product_name; ?>" data-discounted-price="<?php echo $dis_price; ?>">
+                                <div class="productCard__image">
+                                    <div class="ratio ratio-63:57">
+                                        <img class="absolute-full-center rounded-8" src="<?php echo $image_path_thumbnail; ?>" alt="product image">
+                                    </div>
+                                    <div class="productCard__controls z-3">
+                                        <a href="#" class="productCard__icon">
+                                            <i class="fa-regular fa-send"></i>
+                                        </a>
+                                        <a data-barba href="<?php echo $image_path_thumbnail; ?>" class="gallery__item js-gallery productCard__icon" data-gallery="<?php echo $product_id ?>">
+                                            <i class="fa-regular fa-images"></i>
+                                        </a>
+                                        <a href="<?php echo PRODUCT_DETAIILS.'?id='.$product_id; ?>" class="productCard__icon">
+                                            <i class="fa-regular fa-eye"></i>
+                                        </a>    
+                                    </div>
+                                </div>
+                                <!-- <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                                <input type="hidden" name="product_img" value="<?php echo $image_path_thumbnail; ?>">
+                                <input type="hidden" name="price" value="<?php echo $price; ?>"> -->
+                                <input type="hidden" name="quantity" value="1">
+                                <div class="productCard__content mt-20">
+                                    <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
+                                    <div class="text-17 fw-500 text-deep-green-1 mt-15">
+                                        <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
+                                    </div>
+                                    <div class="productCard__button d-inline-block add_to_cart_btn" style="width: 100% !important">
+                                        <button type="button" class="button fs-16 w-100 -outline-deep-green-1 text-dark-1 mt-15 toggle-cart" style="width:100%; font-size: 16px; line-height: 18px; font-weight: 500; height: 60px;">Add To Cart</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <?php foreach ($other_images as $image_path): ?>
+                              <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery " data-gallery="<?php echo $product_id ?>"></a>
+                            <?php endforeach; ?>
+                        </div>
+
+                        
+                        
+                    <?php 
+                    }
+                    ?>
+              </div>
+              <div data-anim-child="slide-up delay-4" class="mt-20 mb-90">
+                          <a href="<?php  echo SHOP ?>" class="button -md  text-dark-1">Visit the shop</a>
+                        </div>
+                      <a href="" class="button -md">button</a>
               <div class="row y-gap-30">
                 <div class="col-lg-3 col-sm-6">
                   <div class="productCard -type-1 text-center">

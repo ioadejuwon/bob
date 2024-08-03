@@ -1,3 +1,4 @@
+
 <?php 
   include_once "inc/config.php";
   include_once "inc/drc.php";
@@ -6,6 +7,8 @@
   include_once "head.php";
   include_once "header.php"
 ?>
+
+      
 
       <section data-anim="fade" class="breadcrumbs d-none">
         <div class="container ">
@@ -213,6 +216,7 @@
                         $prodsql_img_thumbnail = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id' AND thumbnail = 1");
                         $row_prod_img_thumbnail = mysqli_fetch_assoc($prodsql_img_thumbnail);
                         $image_path_thumbnail = $row_prod_img_thumbnail['image_path'];
+                        $product_img = $image_path_thumbnail;
 
                         // Get the non-thumbnail images
                         $prodsql_img = mysqli_query($conn, "SELECT * FROM product_images WHERE product_id = '$product_id' AND thumbnail = 0");
@@ -225,7 +229,7 @@
                                 
                         <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/2">
 
-                            <div class="productCard -type-1 text-center" data-product-id="<?php echo $product_id; ?>" data-price="<?php echo $price; ?>" data-image="<?php echo $image_path_thumbnail; ?>" data-name="<?php echo $product_name; ?>" data-discounted-price="<?php echo $dis_price; ?>">
+                            <form id="productForm" class="productCard -type-1 text-center" data-product-id="<?php echo $product_id; ?>" data-price="<?php echo $price; ?>" data-image="<?php echo $image_path_thumbnail; ?>" data-name="<?php echo $product_name; ?>" data-discounted-price="<?php echo $dis_price; ?>">
                                 <div class="productCard__image">
                                     <div class="ratio ratio-63:57">
                                         <img class="absolute-full-center rounded-8" src="<?php echo $image_path_thumbnail; ?>" alt="product image">
@@ -242,6 +246,10 @@
                                         </a>    
                                     </div>
                                 </div>
+                                <!-- <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                                <input type="hidden" name="product_img" value="<?php echo $image_path_thumbnail; ?>">
+                                <input type="hidden" name="price" value="<?php echo $price; ?>"> -->
+                                <input type="hidden" name="quantity" value="1">
                                 <div class="productCard__content mt-20">
                                     <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
                                     <div class="text-17 fw-500 text-deep-green-1 mt-15">
@@ -251,8 +259,7 @@
                                         <button type="button" class="button fs-16 w-100 -outline-deep-green-1 text-dark-1 mt-15 toggle-cart" style="width:100%; font-size: 16px; line-height: 18px; font-weight: 500; height: 60px;">Add To Cart</button>
                                     </div>
                                 </div>
-                            </div>
-
+                            </form>
 
                             <?php foreach ($other_images as $image_path): ?>
                               <a data-barba href="<?php echo $image_path; ?>" class="gallery__item js-gallery " data-gallery="<?php echo $product_id ?>"></a>

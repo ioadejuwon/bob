@@ -7,6 +7,8 @@
     $pagetitle = "All Products";
     include_once "../inc/drc.php"; 
 
+    
+
     if(!isset($_SESSION['user_id'])){
         header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
         exit; // Make sure to exit after sending the redirection header
@@ -33,16 +35,22 @@
 
 ?>
 
-      <!-- <div class="content-wrapper js-content-wrapper">
-        <div class="dashboard -hme-9 js-dashbord-home-9"> -->
+
+
+
+
+
+      <div class="content-wrapper js-content-wrapper">
+        <div class="dashboard -home-9 js-dashboard-home-9">
+            
           <?php include_once "adm-sidebar.php" ?>
+          
           <div class="dashboard__main">
-              <div class="dashboard__content bg-light-4">
-              
+            <div class="dashboard__content bg-light-4">
               <div class="row pb-50 mb-10">
                 <div class="col-auto">
-                  <h1 class="text-30 lh-12 fw-700">My Products</h1>
-                  <div class="mt-10">You can find the products you have added here.</div>
+                  <h1 class="text-30 lh-12 fw-700">Coupon Codes</h1>
+                  <div class="mt-10">You can add coupon codes here.</div>
                 </div>
               </div>
 
@@ -53,7 +61,7 @@
                     <div class="tabs -active-purple-2 js-tabs">
                       <div class="tabs__controls d-flex items-center py-20 px-30 border-bottom-light js-tabs-controls">
                         <button class="text-light-1 lh-12 tabs__button js-tabs-button is-active" data-tab-target=".-tab-item-1" type="button">
-                          All Products
+                          All Coupon Codes
                         </button>
                         <button class="text-light-1 lh-12 tabs__button js-tabs-button ml-30" data-tab-target=".-tab-item-2" type="button">
                           <!-- Finished -->
@@ -100,7 +108,7 @@
                             </div>
                           </div>
 
-                          <div class="row y-gap-30 pt-30">
+                          <div class="row y-gap-30 pt-30 d-none">
 
                           <?php 
                             $prodsql = mysqli_query($conn, "SELECT * FROM products");
@@ -126,7 +134,7 @@
                             ?>
                         
                                 
-                                <div class="w-1/3 xl:w-1/3 lg:w-1/2 sm:w-1/1">
+                                <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/1">
                                     <div class="productCard -type-1 text-center">
                                         <div class="productCard__image">
                                             <div class="ratio ratio-63:57">
@@ -170,10 +178,13 @@
                 </div>
               </div>
 
-              </div>
+            </div>
+
+
+
     
 
-            
+        
            
 <?php 
     include_once "adm-footer.php"; 

@@ -5,23 +5,17 @@
     include_once "../inc/config.php"; 
     include_once "../inc/drc.php"; 
 
-    
-
-
     if(!isset($_SESSION['user_id'])){
-      header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
-      exit; // Make sure to exit after sending the redirection header
-  }else{
-      $unique_id = $_SESSION['user_id'];
-      
-  }
+        header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
+        exit; // Make sure to exit after sending the redirection header
+    }else{
+        $unique_id = $_SESSION['user_id'];
+        
+    }
   
   
-  include_once "adm-head.php"; 
-  include_once "adm-header.php"; 
-
-
-  
+    include_once "adm-head.php"; 
+    include_once "adm-header.php"; 
   
     $sql = mysqli_query($conn, "SELECT * FROM bob_admin WHERE user_id = '{$_SESSION['user_id']}'");
     $row = mysqli_fetch_assoc($sql);
@@ -38,30 +32,20 @@
 
     $email = $row['email'];
     $email = !empty($row["email"]) ? $row["email"] : "No info entered";
-
-
-
 ?>
-
-
-
-
-
 
       <div class="content-wrapper js-content-wrapper">
         <div class="dashboard -home-9 js-dashboard-home-9">
-            
           <?php include_once "adm-sidebar.php" ?>
-          
           <div class="dashboard__main">
             <div class="dashboard__content bg-light-4">
+              
               <div class="row pb-50 mb-10">
                 <div class="col-auto">
                   <h1 class="text-30 lh-12 fw-700">Profile </h1>
                   <div class="mt-10">Lorem ipsum dolor sit amet, consectetur.</div>
                 </div>
               </div>
-
 
               <div class="row y-gap-30">
                 <div class="col-12">
@@ -537,10 +521,6 @@
               </div>
 
             </div>
-
-
-
-    
 
             
 <?php 

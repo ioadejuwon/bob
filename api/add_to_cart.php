@@ -7,10 +7,11 @@ $data = json_decode(file_get_contents('php://input'), true);
 if ($data) {
     $price = $data['price'];
     $product_id = $data['product_id'];
+    $product_img = $data['product_img'];
     $cart_id = $data['cart_id'];
 
-    $stmt = $conn->prepare("INSERT INTO bob_cart (cart_id, productid, price) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $cart_id, $product_id, $price);
+    $stmt = $conn->prepare("INSERT INTO bob_cart (cart_id, productid, product_img,quantity, price) VALUES (?, ?, ?,1, ?)");
+    $stmt->bind_param("ssss", $cart_id, $product_id, $product_img, $price);
 
     if ($stmt->execute()) {
         echo json_encode(['status' => 'success']);

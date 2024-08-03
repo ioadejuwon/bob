@@ -4590,6 +4590,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: white;
   width: 100%;
   padding: 0 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 991px) {
@@ -4607,7 +4608,7 @@ h1, h2, h3, h4, h5, h6 {
 .header.-type-3 .header__container {
   position: relative;
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.15); */
 }
 
 .header.-type-3 .header-menu {
