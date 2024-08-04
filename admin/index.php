@@ -12,7 +12,7 @@
         header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
         exit; // Make sure to exit after sending the redirection header
     }else{
-        $unique_id = $_SESSION['user_id'];
+      $user_id = $_SESSION['user_id'];
         
     }
     
@@ -23,9 +23,9 @@
     // include_once "../inc/drc.php"; 
 
 
-    $sql = mysqli_query($conn, "SELECT * FROM bob_admin WHERE unique_id = '{$_SESSION['user_id']}'");
+    $sql = mysqli_query($conn, "SELECT * FROM bob_admin WHERE user_id = '{$_SESSION['user_id']}'");
     $row = mysqli_fetch_assoc($sql);
-    $unique_id = $row["user_id"];
+    // $user_id = $row["user_id"];
 
     $instructor = $row["instructor"];
     $admin = $row["admin"];

@@ -69,7 +69,7 @@ if(isset($_POST['signup'])){
         // $uname = str_replace(' ','', $username);
         $fullname = $fname. ' '. $lname;
 
-        $unique_id;
+        $user_id;
     
         
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){ // Validate Email Address
@@ -94,14 +94,14 @@ if(isset($_POST['signup'])){
 
                 $insert = "INSERT INTO bob_admin (user_id, fname, lname, email, username, email_verify, pword_hash) VALUES (?, ?, ?, ?, ?, 0, ?)";
                 $stmt = mysqli_prepare($conn, $insert); // Prepare the SQL statement
-                mysqli_stmt_bind_param($stmt, "ssssss", $unique_id, $fname, $lname, $email, $username, $pwordhash); // Bind values to the placeholders
+                mysqli_stmt_bind_param($stmt, "ssssss", $user_id, $fname, $lname, $email, $username, $pwordhash); // Bind values to the placeholders
 
                 
                 if (mysqli_stmt_execute($stmt)) {
                     echo "I inserted into users here";
                     
-                    $_SESSION['user_id'] = $unique_id;
-                    header("location: ".DASHBOARD."?id=".$unique_id);
+                    $_SESSION['user_id'] = $user_id;
+                    header("location: ".DASHBOARD."?id=".$user_id);
 
                     mysqli_stmt_close($stmt); // Close the statement before opening another one
                     exit();
