@@ -33,8 +33,6 @@
 
 ?>
 
-      <!-- <div class="content-wrapper js-content-wrapper">
-        <div class="dashboard -hme-9 js-dashbord-home-9"> -->
           <?php include_once "adm-sidebar.php" ?>
           <div class="dashboard__main">
               <div class="dashboard__content bg-light-4">

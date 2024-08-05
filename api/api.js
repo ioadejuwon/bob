@@ -122,7 +122,7 @@ $(document).ready(function() {
             success: function(response) {
                 const result = JSON.parse(response);
                 if (result.success) {
-                    window.location.href = 'add_image.php?productid=' + result.product_id;
+                    window.location.href = 'image?productid=' + result.product_id;
                 } else {
                     // $('#error-message').html('An error occurred: ' + result.message);
                     showNotification('An error occurred: ' + result.message);
@@ -153,6 +153,12 @@ $(document).ready(function() {
                     // alert('Product updated successfully!');
                     // $('#success-message').text(jsonResponse.message);
                     showNotification(jsonResponse.message);
+                    // window.location.href('image')
+                    
+                    // Hide and remove notification after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = 'products';
+                    }, 2000);
                 } else {
                     // $('#error-message').text(jsonResponse.message);
                     showNotification('An error occurred: ' + jsonResponse.message);
@@ -438,7 +444,8 @@ document.querySelectorAll('.thumbnail-form').forEach(form => {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                console.log('Thumbnail updated successfully.');
+                // console.log('Thumbnail updated successfully.');
+                
 
                 // Remove the 'thumbnail-selected' class from all checkmark buttons
                 document.querySelectorAll('.thumbnail-form button').forEach(button => {
@@ -447,6 +454,7 @@ document.querySelectorAll('.thumbnail-form').forEach(form => {
 
                 // Add the 'thumbnail-selected' class to the clicked checkmark button
                 this.querySelector('button').classList.add('thumbnail-selected');
+                showNotification('Thumbnail updated successfully.');
             } else {
                 console.error('Error updating thumbnail:', data.message);
             }
@@ -471,9 +479,9 @@ Dropzone.options.productImagesDropzone = {
 
         // Check if the response status is success before redirecting
         if (response.status === 'success') {
-            console.log('Redirecting to:', 'thumbnail.php?productid=' + response.product_id);
+            console.log('Redirecting to:', 'thumbnail?productid=' + response.product_id);
             // Redirect to another page after successful upload
-            window.location.href = 'thumbnail.php?productid=' + response.product_id;
+            window.location.href = 'thumbnail?productid=' + response.product_id;
         } else {
             console.log('Upload error:', response.message);
         }

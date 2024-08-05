@@ -31,7 +31,7 @@ define('CATEGORIES', ADMIN_URL.'categories');
 define('PRODUCTS', ADMIN_URL.'products');
 define('COUPON', ADMIN_URL.'coupon');
 define('PROFILE', ADMIN_URL.'profile');
-define('ADD_IMAGE', ADMIN_URL.'add_image');
+define('ADD_IMAGE', ADMIN_URL.'image');
 define('EDIT_PRODUCT', ADMIN_URL.'editproduct');
 define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail');
 define('EDIT_IMAGES', ADMIN_URL.'editimages');

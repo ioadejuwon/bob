@@ -41,7 +41,7 @@
   
   
   include_once "adm-head.php"; 
-  // include_once "adm-header.php"; 
+  include_once "adm-header.php"; 
 
 
     // include_once "../inc/add-course.php"; 
@@ -64,8 +64,6 @@
 
 
 
-      <div class="content-wrapper js-content-wrapper">
-        <div class="dashboard -home-9 js-dashboard-home-9">
             
           <?php include_once "adm-sidebar.php" ?>
 

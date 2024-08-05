@@ -147,7 +147,16 @@
                                 <input type="hidden" name="price" value="<?php echo $price; ?>"> -->
                                 <input type="hidden" name="quantity" value="1">
                                 <div class="productCard__content mt-20">
-                                    <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
+                                    <h4 class="text-17 fw-500 mt-15">
+                                      <?php 
+                                        if(strlen($product_name) >18){
+                                          echo substr($product_name,0,16).'...'; 
+                                        }else{
+                                          echo $product_name;
+                                        }
+                                        // echo $product_name;
+                                        ?>
+                                    </h4>
                                     <div class="text-17 fw-500 text-deep-green-1 mt-15">
                                         <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
                                     </div>
@@ -168,11 +177,13 @@
                     }
                     ?>
               </div>
-              <div data-anim-child="slide-up delay-4" class="mt-20 mb-90">
-                          <a href="<?php  echo SHOP ?>" class="button -md  text-dark-1">Visit the shop</a>
-                        </div>
-                      <a href="" class="button -md">button</a>
-              <div class="row y-gap-30">
+           
+              <div class="d-inline-blockn  mt-30" style="width: 100% !important">
+                  <a href="<?php  echo SHOP ?>" class="button fs-16 w-100 -deep-green-1 text-white" style="width:35%; font-size: 16px; line-height: 18px; font-weight: 500; height: 60px; margin:0% auto;">
+                    Visit the Shop
+                  </a>
+              </div>
+              <div class="row y-gap-30 d-none">
                 <div class="col-lg-3 col-sm-6">
                   <div class="productCard -type-1 text-center">
 

@@ -36,17 +36,11 @@
 ?>
 
 
-
-
-
-
-      <div class="content-wrapper js-content-wrapper">
-        <div class="dashboard -home-9 js-dashboard-home-9">
             
           <?php include_once "adm-sidebar.php" ?>
           
           <div class="dashboard__main">
-            <div class="dashboard__content bg-light-4">
+            <div class="dashboard__content bg-light-4 vh-100">
               <div class="row pb-50 mb-10">
                 <div class="col-auto">
                   <h1 class="text-30 lh-12 fw-700">Coupon Codes</h1>

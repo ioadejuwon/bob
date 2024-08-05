@@ -1,5 +1,5 @@
 
-<div id="notification-container"></div> 
+    <div id="notification-container"></div> 
 
     <header class="header -dashboard -dark-bg-dark-1 js-header">
         <div class="header__container py-20 px-30">
@@ -104,7 +104,6 @@
                 <div class="relative d-flex items-center ml-10">
                     <div  data-el-toggle=".js-profile-toggle">
                         <img class="size-50" src="assets/img/misc/user-profile.png" alt="image">
-                        I
                     </div>
 
                     <div class="toggle-element js-profile-toggle"  >
@@ -183,6 +182,8 @@
 
     <div class="content-wrapper js-content-wrapper">
         <div class="dashboard -home-9 js-dashboard-home-9">
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const toggles = document.querySelectorAll("[data-el-toggle]");

@@ -34,8 +34,7 @@
     $email = !empty($row["email"]) ? $row["email"] : "No info entered";
 ?>
 
-      <div class="content-wrapper js-content-wrapper">
-        <div class="dashboard -home-9 js-dashboard-home-9">
+
           <?php include_once "adm-sidebar.php" ?>
           <div class="dashboard__main">
             <div class="dashboard__content bg-light-4">
