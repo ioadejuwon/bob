@@ -71,14 +71,15 @@ echo '</script>';
       </section>
 
 
-      <section class="page-header -type-1 mt-60">
+      <section class="page-header -type-1 mt-60 bg-deep-green-1 text-white">
+      <div class="overlay"></div>
         <div class="container">
           <div class="page-header__content">
-            <div class="row justify-center text-center">
+            <div class="row justify-center text-left">
               <div class="col-auto">
                 <div data-anim="slide-up delay-1">
 
-                  <h1 class="page-header__title">Shop Cart</h1>
+                  <h1 class="page-header__title text-white">Shop Cart</h1>
 
                 </div>
 
