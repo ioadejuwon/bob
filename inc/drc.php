@@ -11,8 +11,10 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
     define('ADMIN_URL', 'http://localhost:8888/bob/admin/');
 } else {
     // Hosting environment
-    define('BASE_URL', 'https://bobthebuilder.shop/');
-    define('ADMIN_URL', 'https://admin.buildwithbob.shop/');
+    // define('BASE_URL', 'https://bobthebuilder.shop/');
+    // define('ADMIN_URL', 'https://admin.buildwithbob.shop/');
+    define('BASE_URL', 'https://bwb.mvl.bio/');
+    define('ADMIN_URL', 'https://bwb.mvl.bio/admin/');
 }
 
 // Pages
