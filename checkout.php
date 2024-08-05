@@ -43,7 +43,7 @@ include_once "header.php"
         <div class="overlay"></div>
         <div class="container">
           <div class="page-header__content">
-            <div class="row justify-center text-center">
+            <div class="row justify-centr text-left">
               <div class="col-auto">
                 <div data-anim="slide-up delay-1">
 
