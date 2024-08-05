@@ -42,7 +42,6 @@
 
     $sql = mysqli_query($conn, "SELECT * FROM bob_admin WHERE user_id = '{$_SESSION['user_id']}'");
     $row = mysqli_fetch_assoc($sql);
-    $user_id = $row["user_id"];
 
     $fname = $row['fname'];
 

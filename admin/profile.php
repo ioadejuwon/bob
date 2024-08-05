@@ -1,15 +1,16 @@
 <?php 
     session_start();
 
+    
+    include_once "../inc/config.php";
     $pagetitle = "Profile";
-    include_once "../inc/config.php"; 
     include_once "../inc/drc.php"; 
 
     if(!isset($_SESSION['user_id'])){
         header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
         exit; // Make sure to exit after sending the redirection header
     }else{
-        $unique_id = $_SESSION['user_id'];
+        $user_id = $_SESSION['user_id'];
         
     }
   
@@ -19,7 +20,7 @@
   
     $sql = mysqli_query($conn, "SELECT * FROM bob_admin WHERE user_id = '{$_SESSION['user_id']}'");
     $row = mysqli_fetch_assoc($sql);
-    $unique_id = $row["user_id"];
+    // $unique_id = $row["user_id"];
     $fname = !empty($row["fname"]) ? $row["fname"] : "No info entered";
     $lname = !empty($row["fname"]) ? $row["lname"] : "No info entered";
 
@@ -75,7 +76,7 @@
                         <div class="tabs__pane -tab-item-0 is-active">
                           <div class="row y-gap-20 x-gap-20 items-center">
                             <div class="col-auto">
-                              <img class="size-100" src="../assets/img/dashboard/edit/1.png" alt="image">
+                              <img class="size-100" src="assets/img/dashboard/edit/1.png" alt="image">
                             </div>
 
                             <div class="col-auto">
@@ -154,7 +155,7 @@
                         <div class="tabs__pane -tab-item-1">
                           <div class="row y-gap-20 x-gap-20 items-center">
                             <div class="col-auto">
-                              <img class="size-100" src="../assets/img/dashboard/edit/1.png" alt="image">
+                              <img class="size-100" src="assets/img/dashboard/edit/1.png" alt="image">
                             </div>
 
                             <div class="col-auto">

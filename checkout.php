@@ -46,15 +46,10 @@ include_once "header.php"
             <div class="row justify-centr text-left">
               <div class="col-auto">
                 <div data-anim="slide-up delay-1">
-
                   <h1 class="page-header__title text-white">Shop Checkout</h1>
-
                 </div>
-
                 <div data-anim="slide-up delay-2">
-
-                <p class="page-header__text">We’re on a mission to deliver Comfortable Clothing at a reasonable price.</p>
-
+                  <p class="page-header__text">We’re on a mission to deliver Comfortable Clothing at a reasonable price.</p>
                 </div>
               </div>
             </div>

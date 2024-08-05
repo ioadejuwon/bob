@@ -20,21 +20,23 @@ if ($_SERVER['HTTP_HOST'] == 'localhost:8888') {
 // Pages
 define('SHOP', BASE_URL.'shop');
 define('PRODUCT_DETAIILS', BASE_URL.'product');
-define('SIGNUP', ADMIN_URL.'signup');
 define('CART', BASE_URL.'cart');
 define('CHECKOUT', BASE_URL.'checkout');
 define('ORDER', BASE_URL.'order');
 define('CONFIRM_PAY', BASE_URL.'inc/confirm');
 
 define('ADMIN_LOGIN', ADMIN_URL.'login');
+define('SIGNUP', ADMIN_URL.'signup');
 define('DASHBOARD', ADMIN_URL);
 define('ADD_PRODUCT', ADMIN_URL.'create');
 define('CATEGORIES', ADMIN_URL.'categories');
 define('PRODUCTS', ADMIN_URL.'products');
+define('ORDERS', ADMIN_URL.'orders');
 define('COUPON', ADMIN_URL.'coupon');
 define('PROFILE', ADMIN_URL.'profile');
 define('ADD_IMAGE', ADMIN_URL.'image');
 define('EDIT_PRODUCT', ADMIN_URL.'editproduct');
+define('DELETE_PRODUCT', ADMIN_URL.'../api/delete');
 define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail');
 define('EDIT_IMAGES', ADMIN_URL.'editimages');
 

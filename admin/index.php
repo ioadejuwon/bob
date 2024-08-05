@@ -17,7 +17,6 @@
     }
     
     
-    
     include_once "adm-head.php"; 
     include_once "adm-header.php"; 
     // include_once "../inc/drc.php"; 

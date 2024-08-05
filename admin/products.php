@@ -11,7 +11,7 @@
         header("location: ".ADMIN_LOGIN."?url=".$current_url."&t=".$pagetitle);// redirect to login page if not signed in
         exit; // Make sure to exit after sending the redirection header
     }else{
-        $unique_id = $_SESSION['user_id'];
+        $user_id = $_SESSION['user_id'];
         
     }
   
@@ -22,8 +22,6 @@
   
   $sql = mysqli_query($conn, "SELECT * FROM bob_admin WHERE user_id = '{$_SESSION['user_id']}'");
   $row = mysqli_fetch_assoc($sql);
-  $user_id = $row["user_id"];
-
   $fname = $row['fname'];
 
   // $categories = mysqli_query($conn, "SELECT * FROM bob_categories");
@@ -124,7 +122,7 @@
                             ?>
                         
                                 
-                                <div class="w-1/3 xl:w-1/3 lg:w-1/2 sm:w-1/1">
+                                <div class="w-1/4 xl:w-1/3 lg:w-1/2 sm:w-1/2">
                                     <div class="productCard -type-1 text-center">
                                         <div class="productCard__image">
                                             <div class="ratio ratio-63:57">
@@ -140,10 +138,28 @@
                                                 <a href="<?php echo EDIT_PRODUCT . '?productid='.$product_id ?>" class=" productCard__icon" >
                                                     <i class="fa-regular fa-edit"></i>
                                                 </a>
+                                                <a href="<?php echo DELETE_PRODUCT . '?productid='.$product_id ?>" class=" productCard__icon" >
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="productCard__content mt-20">
-                                            <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
+                                            <!-- <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4> -->
+                                            <h4 class="text-17 fw-500 mt-15 no-big-screen">
+                                              <?php
+                                                // echo $product_name; 
+                                                if(strlen($product_name) >13){
+                                                  echo substr($product_name,0,13).'...'; 
+                                                }else{
+                                                  echo $product_name;
+                                                }
+                                              ?>
+                                            </h4>
+                                            <h4 class="text-17 fw-500 mt-15 lg:d-none">
+                                              <?php
+                                                echo $product_name; 
+                                              ?>
+                                            </h4>
                                             <div class="text-17 fw-500 text-deep-green-1 mt-15">
                                                 <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
                                             </div>
