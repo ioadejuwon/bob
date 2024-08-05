@@ -224,6 +224,11 @@ $(document).ready(function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Add Product to Cart Begin
     document.querySelectorAll('.toggle-cart').forEach(function(button) {
+        const productId = button.closest('form').dataset.productId;
+        if (isProductInCart(productId)) {
+            updateButton(button);
+        }
+
         button.addEventListener('click', function() {
             const form = this.closest('form');
             const formData = new FormData(form);
@@ -243,11 +248,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 quantity: productquantity
             };
 
-            addToCart(product);
+            addToCart(product, this);
         });
     });
 
-    function addToCart(product) {
+    
+    function addToCart(product, button) {
         let cart = JSON.parse(localStorage.getItem('bwb_cart')) || [];
         const existingProductIndex = cart.findIndex(item => item.product_id === product.product_id);
 
@@ -259,8 +265,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         localStorage.setItem('bwb_cart', JSON.stringify(cart));
         showNotification('Product added to cart');
+        updateButton(button);
+    }
+
+    function updateButton(button) {
+        button.textContent = 'Added to Cart';
+        button.classList.add('-deep-green-1'); // Optional: add a class to style the button differently
+        button.classList.add('text-white'); // Optional: add a class to style the button differently
+        button.classList.remove('text-dark-1'); // Optional: add a class to style the button differently
+        button.classList.remove('-outline-deep-green-1'); // Optional: add a class to style the button differently
+    }
+
+    function isProductInCart(productId) {
+        const cart = JSON.parse(localStorage.getItem('bwb_cart')) || [];
+        return cart.some(item => item.product_id === productId);
     }
     // Add Product to Cart End
+
 
     // Display Product in Cart on the Cart Page Begin
     displayCartItems();
