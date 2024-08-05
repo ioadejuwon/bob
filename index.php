@@ -19,7 +19,7 @@
               <div class="bg-image js-lazy" data-bg="admin/assets/img/landing.jpg"></div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <!-- <div class="swiper-slide">
             <div data-anim-child="fade" class="mainSlider__bg">
               <div class="bg-image js-lazy" data-bg="admin/assets/img/landing.jpg"></div>
             </div>
@@ -28,7 +28,7 @@
             <div data-anim-child="fade" class="mainSlider__bg">
               <div class="bg-image js-lazy" data-bg="admin/assets/img/landing.jpg"></div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="container">
