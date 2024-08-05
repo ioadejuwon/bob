@@ -85,7 +85,7 @@ echo '</script>';
 
                 <div data-anim="slide-up delay-2">
 
-                  <p class="page-header__text">We’re on a mission to deliver engaging, curated courses at a reasonable price.</p>
+                  <p class="page-header__text">We’re on a mission to deliver Comfortable Clothing at a reasonable price.</p>
 
                 </div>
               </div>
