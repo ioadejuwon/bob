@@ -75,7 +75,7 @@ echo '</script>';
       <div class="overlay"></div>
         <div class="container">
           <div class="page-header__content">
-            <div class="row justify-center text-left">
+            <div class="row justify-cente text-left">
               <div class="col-auto">
                 <div data-anim="slide-up delay-1">
 
