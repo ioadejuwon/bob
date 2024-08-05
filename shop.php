@@ -1,4 +1,6 @@
-
+<style>
+  
+</style>
 <?php 
   include_once "inc/config.php";
   include_once "inc/drc.php";
@@ -40,11 +42,12 @@
 
 
       <section class="page-header -type-1 mt-60 bg-deep-green-1 text-white">
+      <div class="overlay"></div>
         
         <div class="container">
           <div class="page-header__content">
             <div class="row justify-cente text-left">
-              <div class="col-auto pt-30 pb-30">
+              <div class="col-auto pt-30 pb-30" >
                 <div data-anim="slide-up delay-1">
                   <h1 class="page-header__title text-white">Our Collection</h1>
                 </div>
@@ -71,8 +74,7 @@
                     <div class="search">
                       <form action="https://creativelayers.net/themes/educrat-html/post">
                         <button class="submit" type="submit">
-                          <i class="icon" data-feather="search">
-</i>
+                          <i class="icon" data-feather="search"></i>
                         </button>
                         <input class="field" type="text" placeholder="Search">
                       </form>
@@ -251,7 +253,21 @@
                                 <input type="hidden" name="price" value="<?php echo $price; ?>"> -->
                                 <input type="hidden" name="quantity" value="1">
                                 <div class="productCard__content mt-20">
-                                    <h4 class="text-17 fw-500 mt-15"><?php echo $product_name; ?></h4>
+                                    <h4 class="text-17 fw-500 mt-15 no-big-screen">
+                                      <?php
+                                        // echo $product_name; 
+                                        if(strlen($product_name) >18){
+                                          echo substr($product_name,0,16).'...'; 
+                                        }else{
+                                          echo $product_name;
+                                        }
+                                      ?>
+                                    </h4>
+                                    <h4 class="text-17 fw-500 mt-15 lg:d-none">
+                                      <?php
+                                        echo $product_name; 
+                                      ?>
+                                    </h4>
                                     <div class="text-17 fw-500 text-deep-green-1 mt-15">
                                         <span class="line-through opac-50 text-14"><?php echo $discounted_price; ?></span> <?php echo $original_price; ?>
                                     </div>
@@ -272,12 +288,11 @@
                     ?>
               </div>
 
-              <div class="row justify-center pt-60 lg:pt-40">
+              <div class="row justify-center pt-60 lg:pt-40 d-none">
                 <div class="col-auto">
                   <div class="pagination -buttons">
                     <button class="pagination__button -prev">
-                      <i class="icon icon-chevron-left">
-</i>
+                      <i class="icon icon-chevron-left"></i>
                     </button>
 
                     <div class="pagination__count">
@@ -300,6 +315,16 @@
           </div>
         </div>
       </section>
+
+      <!-- Cart button -->
+      <a href="<?php echo CART ?>"  class="hp-buy-now-btn position-fixed">
+          <button type="button" class="button bg-deep-green-1 cart-btn">
+              <i class="fa-solid fa-basket-shopping text-white"></i>
+              <span class="cart-items-number">
+                  <span class="cart-item-count">0</span>
+              </span>
+          </button>
+      </a>
 
 <?php
   include_once "footer.php";

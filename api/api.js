@@ -222,8 +222,15 @@ $(document).ready(function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Cart
+    
+    displayCartItems();
+    displayOrderSummary();
+    updateCartItemCount();
+
     // Add Product to Cart Begin
     document.querySelectorAll('.toggle-cart').forEach(function(button) {
+        console.log('Button initialized');
         const productId = button.closest('form').dataset.productId;
         if (isProductInCart(productId)) {
             updateButton(button);
@@ -252,8 +259,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    
     function addToCart(product, button) {
+        console.log('Adding to cart:', product);
         let cart = JSON.parse(localStorage.getItem('bwb_cart')) || [];
         const existingProductIndex = cart.findIndex(item => item.product_id === product.product_id);
 
@@ -266,26 +273,32 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('bwb_cart', JSON.stringify(cart));
         showNotification('Product added to cart');
         updateButton(button);
+        updateCartItemCount(); // Ensure this is called after the cart is updated
     }
 
     function updateButton(button) {
         button.textContent = 'Added to Cart';
         button.classList.add('-deep-green-1'); // Optional: add a class to style the button differently
         button.classList.add('text-white'); // Optional: add a class to style the button differently
-        button.classList.remove('text-dark-1'); // Optional: add a class to style the button differently
-        button.classList.remove('-outline-deep-green-1'); // Optional: add a class to style the button differently
+        button.classList.remove('text-dark-1'); // Optional: remove a class to style the button differently
+        button.classList.remove('-outline-deep-green-1'); // Optional: remove a class to style the button differently
     }
 
     function isProductInCart(productId) {
         const cart = JSON.parse(localStorage.getItem('bwb_cart')) || [];
         return cart.some(item => item.product_id === productId);
     }
-    // Add Product to Cart End
 
+    
+    function updateCartItemCount() {
+        const cart = JSON.parse(localStorage.getItem('bwb_cart')) || [];
+        const itemCount = cart.length; // Count the number of unique items in the cart
+
+        document.querySelector('.cart-item-count').textContent = itemCount;
+
+    }
 
     // Display Product in Cart on the Cart Page Begin
-    displayCartItems();
-
     function displayCartItems() {
         const cartItemsContainer = document.getElementById('cartItems');
         if (!cartItemsContainer) return;
@@ -298,11 +311,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <tr>
                     <td colspan="6" class="text-center">
                         Your cart is empty!
-                            <br> 
-                        Add items from the <a class="text-underline" href="`+ shop + `">shop</a> to view them here.
+                        <br>
+                        Add items from the <a class="text-underline" href="` + shop + `">shop</a> to view them here.
                     </td>
                 </tr>
-                `;
+            `;
             updateCartTotals(0, 0);
             return;
         }
@@ -317,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productHTML = `
                 <tr class="cart-item" data-product-id="${item.product_id}">
                     <td>
-                      <div style="width: 100px; height: 100px; background-image: url('${item.image}'); background-size: cover; background-position: center; border-radius: 8px;"></div>
+                        <div style="width: 100px; height: 100px; background-image: url('${item.image}'); background-size: cover; background-position: center; border-radius: 8px;"></div>
                     </td>
                     <td>
                         <div class="fw-500 text-dark-1">${item.name}</div>
@@ -384,6 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             localStorage.setItem('bwb_cart', JSON.stringify(cart));
             displayCartItems();
+            updateCartItemCount(); // Ensure the cart item count is updated when quantities change
         }
     }
 
@@ -392,6 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cart = cart.filter(product => product.product_id !== productId);
         localStorage.setItem('bwb_cart', JSON.stringify(cart));
         displayCartItems();
+        updateCartItemCount(); // Ensure the cart item count is updated when items are removed
     }
 
     function updateCartTotals(subtotal, total) {
@@ -405,8 +420,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Display Product in Cart on the Cart Page End
 
     // Display Product in Cart on the Order Page Begin
-    displayOrderSummary();
-
     function displayOrderSummary() {
         const cartItemsContainer = document.getElementById('totalCartItemsContainer');
         if (!cartItemsContainer) return;
@@ -450,6 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // Display Product in Cart on the Order Page End
 });
+
 
 
 

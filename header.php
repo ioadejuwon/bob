@@ -205,7 +205,7 @@
 
                        
                       <li class="mt-15">
-                          <a data-barba href="<?php echo SHOP ?>">Explore</a>
+                          <a data-barba href="<?php echo SHOP ?>" style="padding:0 !important">Explore</a>
                         </li>
                         <li>
                           <!-- <a data-barba href="contact-1.html">Contact</a> -->
@@ -216,12 +216,12 @@
                     <div class="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
                       <div class="mobile-footer__number">
                         <div class="text-17 fw-500 text-dark-1">Call us</div>
-                        <div class="text-17 fw-500 text-purple-1">800 388 80 90</div>
+                        <div class="text-17 fw-500 text-dark-1">800 388 80 90</div>
                       </div>
 
-                      <div class="lh-2 mt-10">
-                        <div>329 Queensberry Street,<br> North Melbourne VIC 3051, Australia.</div>
-                        <div>hi@educrat.com</div>
+                      <div class="lh-2 mt-10 text-dark-1">
+                        <div>22 Street,<br> Lagos, Nigeria.</div>
+                        <div>hi@bobthebuilder.com</div>
                       </div>
 
                       <div class="mobile-socials mt-10">
@@ -256,10 +256,19 @@
                 </div>
 
 
-                <div class="relative ml-30 xl:ml-20 items-center">
-                  <a class="d-flex items-center text-dark-1" href="<?php echo CART ?>">
+                <div class="relative ml-30 xl:ml-20 items-center d-none">
+                  <a class="d-flex items-center text-dark-1 " href="<?php echo CART ?>">
                     <i class="text-20 icon icon-basket"></i>
+                    <!-- <span class="cart-items-number">
+                          <span class="cart-item-count2">0</span>
+                      </span> -->
                   </a>
+                  <!-- <button type="button" class="button bg-deep-green-1 cart-btn">
+                      <i class="fa-solid fa-basket-shopping text-white"></i>
+                      <span class="cart-items-number">
+                          <span class="cart-item-count">0</span>
+                      </span>
+                  </button> -->
                   <!-- <button class="d-flex items-center text-dark-1"  data-el-toggle=".js-cart-toggle">
                     <i class="text-20 icon icon-basket"></i>
                   </button> -->
