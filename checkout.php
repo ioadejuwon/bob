@@ -39,20 +39,21 @@ include_once "header.php"
       </section>
 
 
-      <section class="page-header -type-1 mt-60">
+      <section class="page-header -type-1 mt-60 text-white">
+        <div class="overlay"></div>
         <div class="container">
           <div class="page-header__content">
             <div class="row justify-center text-center">
               <div class="col-auto">
                 <div data-anim="slide-up delay-1">
 
-                  <h1 class="page-header__title">Shop Checkout</h1>
+                  <h1 class="page-header__title text-white">Shop Checkout</h1>
 
                 </div>
 
                 <div data-anim="slide-up delay-2">
 
-                  <p class="page-header__text">We’re on a mission to deliver engaging, curated courses at a reasonable price.</p>
+                <p class="page-header__text">We’re on a mission to deliver Comfortable Clothing at a reasonable price.</p>
 
                 </div>
               </div>

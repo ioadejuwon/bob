@@ -41,7 +41,7 @@
       </section>
 
 
-      <section class="page-header -type-1 mt-60 bg-deep-green-1 text-white">
+      <section class="page-header -type-1 mt-60 text-white">
       <div class="overlay"></div>
         
         <div class="container">
