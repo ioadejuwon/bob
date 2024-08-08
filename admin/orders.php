@@ -62,6 +62,7 @@
                     <table class="table w-1/1">
                       <thead>
                         <tr>
+                          <th>Order Date</th>
                           <th>Order ID</th>
                           <th>Customer Name</th>
                           <th>Customer Email</th>
@@ -71,6 +72,7 @@
                           <th>Customer Phone</th>
                           <th>Customer Address</th>
                           <th>Customer Notes</th>
+                          
                           <!-- <th>Customer Address</th> -->
 
                           <!-- <th>Quantity</th>  -->
@@ -102,6 +104,7 @@
                             
                         ?>
                         <tr>
+                          <td><?php echo $cus_date?></td>
                           <td><?php echo $orders_id?></td>
                           <td><?php echo $cus_name?></td>
                           <td><?php echo $cus_email?></td>

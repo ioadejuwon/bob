@@ -51,13 +51,13 @@
               </div>
             </div>
 
-        <button class="d-none swiper-prev button -white-20 text-white size-60 rounded-full d-flex justify-center items-center js-prev d-none">
+        <!-- <button class="d-none swiper-prev button -white-20 text-white size-60 rounded-full d-flex justify-center items-center js-prev d-none">
           <i class="icon icon-arrow-left text-24"></i>
         </button>
 
         <button class="d-none swiper-next button -white-20 text-white size-60 rounded-full d-flex justify-center items-center js-next d-none">
           <i class="icon icon-arrow-right text-24"></i>
-        </button>
+        </button> -->
       </section>
       
       <!-- Hero Section Begin -->
