@@ -5,7 +5,7 @@
     
 
     include_once "../inc/config.php";
-    $pagetitle = "Categories";
+    $pagetitle = "Orders";
     include_once "../inc/drc.php"; 
 
     
@@ -82,29 +82,37 @@
                         <?php
                           $orders = mysqli_query($conn, "SELECT * FROM bob_orders");
                           while ($row_orders = mysqli_fetch_assoc($orders)) {
-                            
                             $orders_id = $row_orders['order_id'];
                             $firstname = $row_orders['first_name'];
                             $lastname = $row_orders['last_name'];
+                            $cus_name = $firstname . " " . $lastname;
                             $cus_email = $row_orders['email'];
                             $cus_phone = $row_orders['phone'];
                             $pay_status = $row_orders['status'];
                             $pay_total = $row_orders['total'];
                             $pay_shipping = $row_orders['shipping'];
-                            $cus_notes = $row_orders['notes'];
                             $cus_country = $row_orders['country'];
                             $cus_state = $row_orders['state'];
                             $cus_city = $row_orders['city'];
                             $cus_street = $row_orders['street'];
-                            $cus_date = $row_orders['created_at'];
-                            $cus_name = $firstname . " " . $lastname;
+                            
                             $cus_address = $cus_street . ", " . $cus_city . ", " . $cus_state . ", " . $cus_country;
 
+                            $cus_date = $row_orders['created_at'];
+                            $date = strtotime($cus_date);
+
+                            $cus_notes = $row_orders['notes'];
+
+                            if($cus_notes == ""){
+                              $cus_notes = "No notes added!";
+                            }else{
+                              $cus_notes;
+                            }
 
                             
                         ?>
                         <tr>
-                          <td><?php echo $cus_date?></td>
+                          <td><?php echo date(' jS F, Y', $date)?></td>
                           <td><?php echo $orders_id?></td>
                           <td><?php echo $cus_name?></td>
                           <td><?php echo $cus_email?></td>

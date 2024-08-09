@@ -37,6 +37,22 @@
     $count_row_categories = mysqli_num_rows($categories_sql);
 
 
+    $total_amount = 0;
+    $orders_sql = mysqli_query($conn, "SELECT * FROM bob_orders");
+    $count_row_orders = mysqli_num_rows($orders_sql);
+
+    while ($row_orders = mysqli_fetch_assoc($orders_sql)) {
+                            
+      $order_amount = $row_orders['total'];
+      // Add the value to the total amount
+      $total_amount += $order_amount;
+
+    }
+    $total_amount = '&#8358;'.number_format($total_amount,2);
+    
+
+
+
 
 ?>
 
@@ -73,7 +89,8 @@
           <div class="col-xl-3 col-md-6">
             <div class="d-flex justify-between items-center py-35 px-30 rounded-16 bg-white -dark-bg-dark-1 shadow-4">
               <div>
-              <div class="text-24 lh-1 fw-700 text-dark-1">$10,800</div>
+              <!-- <div class="text-24 lh-1 fw-700 text-dark-1">$10,800</div> -->
+              <div class="text-24 lh-1 fw-700 text-dark-1"><?php echo $total_amount; ?></div>
               <div class="lh-1 fw-500 mt-10">Total Sales</div>
                 <!-- <div class="lh-1 mt-25"><span class="text-deep-green-1">$50</span> New Sales</div> -->
               </div>
@@ -98,7 +115,7 @@
             <div class="d-flex justify-between items-center py-35 px-30 rounded-16 bg-white -dark-bg-dark-1 shadow-4">
               <div>
                 
-                <div class="text-24 lh-1 fw-700 text-dark-1">129,786</div>
+              <div class="text-24 lh-1 fw-700 text-dark-1"><?php echo $count_row_orders ?></div>
                 <div class="lh-1 fw-500 mt-10">Total Orders</div>
                 <!-- <div class="lh-1 mt-25"><span class="text-deep-green-1">90+</span> New Students</div> -->
               </div>
