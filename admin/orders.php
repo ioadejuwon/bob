@@ -90,6 +90,7 @@
                             $cus_phone = $row_orders['phone'];
                             $pay_status = $row_orders['status'];
                             $pay_total = $row_orders['total'];
+                            $pay_total = '&#8358;'.number_format($pay_total,2);
                             $pay_shipping = $row_orders['shipping'];
                             $cus_country = $row_orders['country'];
                             $cus_state = $row_orders['state'];
