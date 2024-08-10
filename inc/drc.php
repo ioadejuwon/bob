@@ -39,11 +39,10 @@ define('EDIT_PRODUCT', ADMIN_URL.'editproduct');
 define('DELETE_PRODUCT', ADMIN_URL.'../api/delete');
 define('EDIT_THUMBNAIL', ADMIN_URL.'editthumbnail');
 define('EDIT_IMAGES', ADMIN_URL.'editimages');
+define('ORDER_DETAILS', ADMIN_URL.'order?o=');
 
 define('LOGOUT', BASE_URL.'logout?id='.$user_id); // Logout Link
 
-define('SECRET_KEY', 'FLWSECK_TEST-092091172c366ec6441c6b73d4b35cae-X');
-// define('SECRET_KEY', 'FLWSECK-6087b9659c16c537038672cfb8d4ac4d-18adfa38c92vt-X');
 
 
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://'; // Get the protocol (http or https)

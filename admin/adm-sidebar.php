@@ -9,14 +9,14 @@
     </div>
 
     <div class="sidebar__item">
-        <a href="<?php echo ADD_PRODUCT?>" class="d-flex items-center text-17 lh-1 fw-500 -dark-text-white">
+        <a href="<?php echo ADD_PRODUCT?>" class="d-flex items-center text-17 lh-1 fw-500 ">
             <i class="text-20 icon-list mr-15"></i>
             Add New Product
         </a>
     </div>
 
     <div class="sidebar__item">
-        <a href="<?php echo CATEGORIES?>" class="d-flex items-center text-17 lh-1 fw-500 -dark-text-white">
+        <a href="<?php echo CATEGORIES?>" class="d-flex items-center text-17 lh-1 fw-500 ">
             <i class="text-20 icon-list mr-15"></i>
             Category
         </a>
@@ -66,3 +66,6 @@
 
   </div>
 </div>
+
+
+<div class="dashboard__main">

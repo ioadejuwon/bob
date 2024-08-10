@@ -36,7 +36,7 @@
             
           <?php include_once "adm-sidebar.php" ?>
 
-          <div class="dashboard__main">
+
             <div class="dashboard__content bg-light-4">
               <div class="row pb-50 mb-10">
                 <div class="col-auto">
@@ -114,7 +114,7 @@
                         ?>
                         <tr>
                           <td><?php echo date(' jS F, Y', $date)?></td>
-                          <td><?php echo $orders_id?></td>
+                          <td class="underline"><a href="<?php echo ORDER_DETAILS.$orders_id ?>"><?php echo $orders_id?></a></td>
                           <td><?php echo $cus_name?></td>
                           <td><?php echo $cus_email?></td>
                           <td><?php echo $pay_status?></td>

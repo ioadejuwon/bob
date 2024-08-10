@@ -2,6 +2,7 @@
 include_once '../inc/config.php'; // Include your database configuration
 include_once '../inc/randno.php';
 include_once '../inc/drc.php';
+include_once '../inc/env.php';
 
 header('Content-Type: application/json'); // Ensure the content type is JSON
 
