@@ -28,42 +28,59 @@ function confirmPass() {
 
 
 // document.addEventListener('DOMContentLoaded', function() {
+//     // console.log('Script loaded.');
+  
 //     var currentUrl = window.location.href;
-//      console.log('Current URL:', currentUrl);
-
+//     // console.log('Current URL:', currentUrl);
+  
 //     var sidebarLinks = document.querySelectorAll('.sidebar__item a');
-//     console.log('Sidebar links:', sidebarLinks);
-
+//     // console.log('Sidebar links:', sidebarLinks);
+  
 //     sidebarLinks.forEach(function(link) {
-//         // Check if the current URL starts with the link's href
-//         if (currentUrl.startsWith(link.href)) {
+//         // console.log('Link HREF:', link.href);
+//         if (link.href === currentUrl) {
+//             // console.log('Match found:', link.href);
 //             link.parentElement.classList.add('-is-active');
 //         }
 //     });
-// });
+//   });
 
-
-  
 document.addEventListener('DOMContentLoaded', function() {
     var currentUrl = window.location.href;
-    console.log('Current URL:', currentUrl);
+    var currentPathname = new URL(currentUrl).pathname;
+
+    // Extract the base domain and path dynamically
+    var baseUrl = new URL(currentUrl).origin; // Gets the protocol + domain
+    var basePath = new URL(currentUrl).pathname.replace(/\/[^\/]*$/, '/'); // Extracts the base path
+
+    console.log('Base URL:', baseUrl);
+    console.log('Base Path:', basePath);
+    console.log('Current Pathname:', currentPathname);
 
     var sidebarLinks = document.querySelectorAll('.sidebar__item a');
     console.log('Sidebar links:', sidebarLinks);
 
     sidebarLinks.forEach(function(link) {
-        // Extract the base part of the link's URL for comparison
         var linkHref = new URL(link.href).pathname;
         console.log('Link Href:', linkHref);
-        var currentPathname = new URL(currentUrl).pathname;
-        console.log('currentPathname:', currentPathname);
 
-        // Check if the current path contains the link's path as a substring
-        if (currentPathname.includes(linkHref)) {
+        // Ensure base path is removed from paths for comparison
+        var relativeLinkHref = linkHref.replace(basePath, '');
+        var relativeCurrentPathname = currentPathname.replace(basePath, '');
+
+        // Check if the current path is within the section or matches the link
+        if (relativeCurrentPathname === relativeLinkHref || 
+            (relativeLinkHref === 'orders' && relativeCurrentPathname.startsWith('order')) || 
+            (relativeLinkHref === 'create' && (relativeCurrentPathname.startsWith('image') || relativeCurrentPathname.startsWith('thumbnail')))
+        ) {
             link.parentElement.classList.add('-is-active');
         }
     });
 });
+
+
+
+
 
 
 

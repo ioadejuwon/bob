@@ -18,7 +18,8 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
     $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
     
     // Generate a unique name for the file
-    $uniqueName = uniqid('', true); // Generate a unique ID
+    // $uniqueName = uniqid('', true); // Generate a unique ID
+    $uniqueName = $product_id.$imgID; // Generate a unique ID
     $newFileName = $uniqueName . '.' . $fileType; // Append file extension
     $targetFile = $uploadDir . $newFileName;
 

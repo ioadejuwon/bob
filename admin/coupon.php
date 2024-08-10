@@ -39,7 +39,7 @@
             
           <?php include_once "adm-sidebar.php" ?>
           
-          <div class="dashboard__main">
+
             <div class="dashboard__content bg-light-4 vh-100">
               <div class="row pb-50 mb-10">
                 <div class="col-auto">

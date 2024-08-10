@@ -34,5 +34,5 @@ $uid = getName($n);
 $user_id = getName($k);
 $categoryID = "cat-".getName($j).'-'.getName($j);
 $productID = "prod-".getName($l).'-'.getName($l);
-$imgID = "img-".getName($l);
+$imgID = "-".getName($l)."-".getName($j);
 $orderID = "order-".getName($p).'-'.getName($q);
